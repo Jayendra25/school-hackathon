@@ -3,6 +3,9 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
+const REGISTER_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeesu7fm6jiaN94gQX_J79xhD1qCbG2wyG83CsZdKjvsi4EWQ/viewform?usp=publish-editor";
+
 export default function CTASection() {
   return (
     <section id="register" className="section-wrapper bg-black relative overflow-hidden text-center">
@@ -50,7 +53,12 @@ export default function CTASection() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="inline-block"
         >
-          <a href="#register" className="btn-primary text-xl px-12 py-5 shadow-2xl">
+          <a
+            href={REGISTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary text-xl px-12 py-5 shadow-2xl"
+          >
             <span>Register Now</span>
             <ArrowRight className="w-5 h-5" />
           </a>

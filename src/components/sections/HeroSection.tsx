@@ -1,7 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+
+const REGISTER_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeesu7fm6jiaN94gQX_J79xhD1qCbG2wyG83CsZdKjvsi4EWQ/viewform?usp=publish-editor";
 
 export default function HeroSection() {
   return (
@@ -18,16 +22,23 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-zinc-900/80 border border-white/10 mb-8 backdrop-blur-md"
+          className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-zinc-900/80 border border-white/10 mb-8 backdrop-blur-md"
         >
-          <Sparkles className="w-3.5 h-3.5 text-[#8B5CF6]" />
+          {/* Birla College Logo */}
+          <div className="w-7 h-7 rounded-full overflow-hidden bg-white flex items-center justify-center flex-shrink-0">
+            <Image src="/birla-logo.png" alt="Birla Institute Logo" width={28} height={28} className="object-contain w-full h-full" />
+          </div>
           <span className="text-xs sm:text-sm font-medium text-white">
             Birla Institute of Applied Sciences
           </span>
           <span className="w-1 h-1 rounded-full bg-zinc-600" />
           <span className="text-xs sm:text-sm font-medium text-[#A1A1AA]">
-            Powered by <span className="text-white font-semibold">Coding Blocks</span>
+            Powered by <span className="text-white font-semibold">Coding Ninjas</span>
           </span>
+          {/* Coding Ninjas Logo */}
+          <div className="w-7 h-7 rounded-full overflow-hidden bg-white flex items-center justify-center flex-shrink-0">
+            <Image src="/coding-ninja-logo.jpeg" alt="Coding Ninjas Logo" width={28} height={28} className="object-contain w-full h-full" />
+          </div>
         </motion.div>
 
         {/* 96px Hero Title */}
@@ -58,7 +69,12 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
         >
-          <a href="#register" className="btn-primary w-full sm:w-auto">
+          <a
+            href={REGISTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary w-full sm:w-auto"
+          >
             <span>Register Now</span>
             <ArrowRight className="w-4 h-4" />
           </a>

@@ -2,6 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+
+const REGISTER_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeesu7fm6jiaN94gQX_J79xhD1qCbG2wyG83CsZdKjvsi4EWQ/viewform?usp=publish-editor";
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -41,11 +45,10 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-4 pointer-events-none transition-all duration-300">
       <nav
-        className={`pointer-events-auto flex items-center justify-between gap-6 px-6 py-3 rounded-full transition-all duration-300 border ${
-          scrolled
-            ? "bg-black/85 backdrop-blur-xl border-white/15 shadow-2xl shadow-black/80"
-            : "bg-zinc-950/70 backdrop-blur-md border-white/10"
-        } max-w-[1280px] w-full`}
+        className={`pointer-events-auto flex items-center justify-between gap-6 px-6 py-3 rounded-full transition-all duration-300 border ${scrolled
+          ? "bg-black/85 backdrop-blur-xl border-white/15 shadow-2xl shadow-black/80"
+          : "bg-zinc-950/70 backdrop-blur-md border-white/10"
+          } max-w-[1280px] w-full`}
       >
         {/* Brand */}
         <a
@@ -56,8 +59,8 @@ export default function Navbar() {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
-          <div className="w-8 h-8 rounded-full bg-white text-black font-extrabold text-sm flex items-center justify-center group-hover:bg-[#8B5CF6] group-hover:text-white transition-colors duration-200">
-            H
+          <div className="w-8 h-8 rounded-full overflow-hidden border border-white/20 group-hover:border-[#8B5CF6] transition-colors duration-200 bg-white flex items-center justify-center">
+            <Image src="/birla-logo.png" alt="BIAS Logo" width={32} height={32} className="object-contain w-full h-full" />
           </div>
           <div className="flex items-baseline gap-1">
             <span className="text-sm font-bold tracking-tight text-white">
@@ -77,11 +80,10 @@ export default function Navbar() {
               <a
                 key={item.href}
                 href={item.href}
-                className={`relative px-3.5 py-1.5 text-[13px] font-medium transition-all duration-200 rounded-full ${
-                  isActive
-                    ? "text-white bg-white/10"
-                    : "text-[#A1A1AA] hover:text-white hover:bg-white/5"
-                }`}
+                className={`relative px-3.5 py-1.5 text-[13px] font-medium transition-all duration-200 rounded-full ${isActive
+                  ? "text-white bg-white/10"
+                  : "text-[#A1A1AA] hover:text-white hover:bg-white/5"
+                  }`}
               >
                 {item.label}
               </a>
@@ -91,7 +93,9 @@ export default function Navbar() {
 
         {/* Right CTA */}
         <a
-          href="#register"
+          href={REGISTER_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="px-4 py-1.5 text-[13px] font-semibold rounded-full bg-white text-black hover:bg-[#8B5CF6] hover:text-white transition-all duration-200 shadow-sm"
         >
           Register Now
