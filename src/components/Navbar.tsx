@@ -9,13 +9,14 @@ const REGISTER_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSeesu7fm6jiaN94gQX_J79xhD1qCbG2wyG83CsZdKjvsi4EWQ/viewform?usp=publish-editor";
 
 const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Themes", href: "#themes" },
+  { label: "About",    href: "#about" },
+  { label: "Tracks",   href: "#themes" },
   { label: "Why Join", href: "#why-participate" },
-  { label: "Prizes", href: "#prizes" },
+  { label: "Prizes",   href: "#prizes" },
   { label: "Timeline", href: "#timeline" },
-  { label: "Sponsors", href: "#sponsors" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Venue",    href: "#venue" },
+  { label: "FAQ",      href: "#faq" },
+  { label: "Contact",  href: "#contact" },
 ];
 
 function SunIcon() {
@@ -82,37 +83,52 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-3 pointer-events-none">
       <nav
-        className="pointer-events-auto flex items-center justify-between gap-4 px-4 py-2 rounded-xl w-full max-w-[1120px] transition-all duration-200"
+        className="pointer-events-auto flex items-center justify-between gap-4 px-5 py-2.5 rounded-full w-full max-w-[1120px] transition-all duration-200"
         style={{
           background: navBg,
           border: "1px solid var(--nav-border)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          boxShadow: scrolled ? "var(--shadow-md)" : "none",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          boxShadow: scrolled
+            ? "0 4px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)"
+            : "0 2px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)",
         }}
       >
         {/* Brand */}
         <a
           href="#"
-          className="flex items-center gap-2.5 shrink-0"
+          className="flex items-center gap-2 shrink-0"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
         >
+          {/* Birla logo */}
           <div
             className="w-7 h-7 rounded-full overflow-hidden bg-white flex-shrink-0"
             style={{ border: "1px solid var(--border-strong)" }}
           >
             <Image src="/birla-logo.png" alt="BIAS" width={28} height={28} className="object-contain w-full h-full" />
           </div>
-          <div className="flex items-baseline gap-1">
+
+          {/* X collab */}
+          <span className="text-[11px] font-bold" style={{ color: "var(--text-muted)" }}>×</span>
+
+          {/* Coding Blocks logo */}
+          <div
+            className="w-7 h-7 rounded-full overflow-hidden bg-white flex-shrink-0"
+            style={{ border: "1px solid var(--border-strong)" }}
+          >
+            <Image src="/codingblocksindia_logo.jpeg" alt="Coding Blocks" width={28} height={28} className="object-contain w-full h-full" />
+          </div>
+
+          {/* Name */}
+          <div className="flex items-baseline gap-1 ml-0.5">
             <span
-              className="text-[13px] font-semibold tracking-tight"
+              className="text-[13px] font-black tracking-tight"
               style={{ color: "var(--text)" }}
             >
-              Hackathon
+              Tech<span className="text-gradient-royal">Spark</span>
             </span>
             <span
-              className="text-[11px] font-mono font-semibold"
-              style={{ color: "var(--accent)" }}
+              className="text-[11px] font-mono font-semibold text-gradient-gold"
             >
               2026
             </span>
@@ -239,7 +255,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className="pointer-events-auto absolute top-[56px] left-4 right-4 rounded-xl p-2 flex flex-col gap-0.5"
+            className="pointer-events-auto absolute top-[60px] left-4 right-4 rounded-2xl p-2 flex flex-col gap-0.5"
             style={{
               background: "var(--nav-bg-scrolled)",
               border: "1px solid var(--nav-border)",

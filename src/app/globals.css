@@ -111,7 +111,7 @@ body {
   padding-bottom: 96px;
   position: relative;
   border-top: 1px solid var(--border);
-  background-color: var(--bg);
+  background-color: transparent;
   transition: background-color 0.25s ease;
 }
 
@@ -136,7 +136,7 @@ body {
 .bg-grid-pattern {
   background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
   background-size: 28px 28px;
-  background-color: var(--bg);
+  background-color: transparent;
 }
 
 /* ── Typography utilities ── */
@@ -145,6 +145,65 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ── Golden gradient text ── */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 40%, #f0a500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Purple → Gold gradient text ── */
+.text-gradient-royal {
+  background: linear-gradient(135deg, #8b5cf6 0%, #c084fc 40%, #f6d365 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Golden ambient glow blob ── */
+.gold-glow {
+  background: radial-gradient(ellipse at center, rgba(246, 211, 101, 0.18) 0%, rgba(253, 160, 133, 0.10) 50%, transparent 80%);
+  pointer-events: none;
+}
+
+/* ── Gold border accent ── */
+.border-gold {
+  border-color: rgba(246, 211, 101, 0.35) !important;
+}
+
+/* ── Golden badge ── */
+.badge-pill-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background: rgba(246, 211, 101, 0.1);
+  border: 1px solid rgba(246, 211, 101, 0.35);
+  color: #f6d365;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Gold shimmer on prize amount ── */
+.prize-amount {
+  background: linear-gradient(135deg, #ffd700 0%, #f6d365 30%, #fda085 65%, #f0a500 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gold-shimmer 4s ease infinite;
+}
+
+@keyframes gold-shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* ── Section label (badge pill) ── */

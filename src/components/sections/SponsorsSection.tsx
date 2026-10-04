@@ -1,29 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Code2, Sparkles } from "lucide-react";
-
-const orgs = [
-  {
-    icon: GraduationCap,
-    label: "Host Institution",
-    name: "Birla Institute",
-    sub: "of Applied Sciences, Bhimtal",
-  },
-  {
-    icon: Code2,
-    label: "Powered By",
-    name: "Coding Blocks",
-    sub: "EdTech & Mentorship Partner",
-    featured: true,
-  },
-  {
-    icon: Sparkles,
-    label: "Student Body",
-    name: "BIAS Tech Club",
-    sub: "Student Innovation Cell",
-  },
-];
+import Image from "next/image";
 
 export default function SponsorsSection() {
   return (
@@ -31,7 +9,7 @@ export default function SponsorsSection() {
       <div className="app-container text-center">
 
         {/* Section Header */}
-        <div className="mb-12 max-w-2xl mx-auto">
+        <div className="mb-14 max-w-2xl mx-auto">
           <motion.div
             className="badge-pill mb-4"
             initial={{ opacity: 0, y: 10 }}
@@ -39,7 +17,7 @@ export default function SponsorsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            Organizers & Partners
+            Organizer & Partner
           </motion.div>
           <motion.h2
             className="text-[32px] sm:text-[40px] lg:text-[48px] font-bold tracking-[-0.02em] leading-[1.1]"
@@ -49,7 +27,7 @@ export default function SponsorsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.06, ease: "easeOut" }}
           >
-            Backed by Leaders.
+            Powered By.
           </motion.h2>
           <motion.p
             className="text-base sm:text-[17px] mt-3"
@@ -59,57 +37,102 @@ export default function SponsorsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.12, ease: "easeOut" }}
           >
-            Combining academic heritage with industry-leading technical mentorship.
+            TechSpark is a collaboration between academia and industry — bringing structure, mentorship and excitement to school-level builders.
           </motion.p>
         </div>
 
-        {/* Org Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
-          {orgs.map((org, index) => {
-            const Icon = org.icon;
-            return (
-              <motion.div
-                key={org.name}
-                className="card-glass p-6 flex flex-col items-center text-center"
-                style={org.featured ? { borderColor: "var(--border-accent)" } : undefined}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.07, ease: "easeOut" }}
-              >
-                <div
-                  className="icon-box mb-4"
-                  style={{
-                    width: 44,
-                    height: 44,
-                    background: org.featured ? "var(--accent-dim)" : undefined,
-                    borderColor: org.featured ? "var(--border-accent)" : undefined,
-                  }}
-                >
-                  <Icon style={{ width: 20, height: 20 }} />
-                </div>
-                <p
-                  className="text-[10px] font-semibold uppercase tracking-widest mb-1"
-                  style={{ color: org.featured ? "var(--accent)" : "var(--text-muted)" }}
-                >
-                  {org.label}
-                </p>
-                <h3
-                  className="text-base font-semibold"
-                  style={{ color: "var(--text)" }}
-                >
-                  {org.name}
-                </h3>
-                <p
-                  className="text-xs mt-0.5"
-                  style={{ color: "var(--text-muted)" }}
-                >
-                  {org.sub}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
+        {/* Collab layout */}
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+
+          {/* Birla */}
+          <div
+            className="card-glass flex flex-col items-center gap-4 p-8 flex-1 w-full"
+            style={{
+              borderColor: "rgba(246,211,101,0.35)",
+              boxShadow: "0 0 28px rgba(246,211,101,0.12), inset 0 1px 0 rgba(246,211,101,0.08)",
+            }}
+          >
+            <div
+              className="w-20 h-20 rounded-full overflow-hidden bg-white"
+              style={{ border: "2px solid var(--border-strong)" }}
+            >
+              <Image
+                src="/birla-logo.png"
+                alt="Birla Institute of Applied Sciences"
+                width={80} height={80}
+                className="object-contain w-full h-full"
+              />
+            </div>
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-widest mb-1" style={{ color: "#f6d365" }}>
+                Host Institution
+              </p>
+              <h3 className="text-base font-bold leading-snug" style={{ color: "var(--text)" }}>
+                Birla Institute of Applied Sciences
+              </h3>
+            </div>
+          </div>
+
+          {/* X Collab badge */}
+          <motion.div
+            className="flex-shrink-0 flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.7 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+          >
+            <div
+              className="w-11 h-11 rounded-full flex items-center justify-center text-xl font-black"
+              style={{
+                background: "rgba(246,211,101,0.12)",
+                border: "1px solid rgba(246,211,101,0.4)",
+                color: "#f6d365",
+                boxShadow: "0 0 20px rgba(246,211,101,0.55), 0 0 7px rgba(246,211,101,0.35)",
+              }}
+            >
+              ×
+            </div>
+          </motion.div>
+
+          {/* Coding Blocks */}
+          <div
+            className="card-glass flex flex-col items-center gap-4 p-8 flex-1 w-full"
+            style={{
+              borderColor: "rgba(246,211,101,0.35)",
+              boxShadow: "0 0 28px rgba(246,211,101,0.12), inset 0 1px 0 rgba(246,211,101,0.08)",
+            }}
+          >
+            <div
+              className="w-20 h-20 rounded-full overflow-hidden bg-white"
+              style={{ border: "2px solid var(--border-accent)" }}
+            >
+              <Image
+                src="/codingblocksindia_logo.jpeg"
+                alt="Coding Blocks"
+                width={80} height={80}
+                className="object-contain w-full h-full"
+              />
+            </div>
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-widest mb-1" style={{ color: "#f6d365" }}>
+                Powered By
+              </p>
+              <h3 className="text-base font-bold" style={{ color: "var(--text)" }}>
+                Coding Blocks
+              </h3>
+              <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
+                EdTech & Mentorship Partner
+              </p>
+            </div>
+          </div>
+
+        </motion.div>
 
       </div>
     </section>

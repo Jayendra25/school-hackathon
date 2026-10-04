@@ -1,43 +1,50 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, ShieldCheck, Users, Gift, BookOpen, Briefcase } from "lucide-react";
+import { Check, Trophy, Users, BookOpen, Presentation, Sparkles, ShieldCheck } from "lucide-react";
 
 const benefits = [
   {
-    icon: ShieldCheck,
-    title: "Official Certificates",
-    desc: "Recognized certificates of merit and participation issued by BIAS and Coding Blocks.",
+    icon: BookOpen,
+    title: "Real-World Experience",
+    desc: "Experience how an idea becomes a technology product — from problem to prototype.",
   },
   {
     icon: Users,
-    title: "Networking & Community",
-    desc: "Direct interactions with expert mentors, industry judges, and fellow student builders.",
+    title: "Teamwork & Collaboration",
+    desc: "Learn to divide work, communicate ideas and ship together under a deadline.",
   },
   {
-    icon: Gift,
-    title: "Coding Blocks Goodies",
-    desc: "Exclusive hackathon merchandise, developer swag bags, and educational vouchers.",
+    icon: Presentation,
+    title: "Presentation Skills",
+    desc: "Gain confidence presenting your work — explain the problem, solution and impact clearly.",
   },
   {
-    icon: BookOpen,
-    title: "Intensive Learning",
-    desc: "Accelerate your programming skills, learn project architecture, and work under deadlines.",
+    icon: Sparkles,
+    title: "Early Tech Exposure",
+    desc: "Get early hands-on exposure to web development, mobile apps and AI as a school student.",
   },
   {
-    icon: Briefcase,
-    title: "Internship Opportunities",
-    desc: "Top performers get fast-tracked evaluation for internship roles and mentorship programs.",
+    icon: ShieldCheck,
+    title: "Participation Certificates",
+    desc: "Every eligible student who completes the final showcase receives an official Certificate of Participation.",
+  },
+  {
+    icon: Trophy,
+    title: "Trophies & Awards",
+    desc: "Win trophies, track awards, special recognition and prizes across multiple award categories.",
   },
 ];
 
 const specs = [
-  { label: "Format",      value: "24-hour continuous hackathon" },
-  { label: "Eligibility", value: "School & College students" },
-  { label: "Team size",   value: "1 to 4 members" },
-  { label: "Entry fee",   value: "Free to register" },
-  { label: "Prize pool",  value: "₹25,000 + swag & certificates" },
-  { label: "Partner",     value: "Coding Blocks" },
+  { label: "Who Can Join",   value: "School students" },
+  { label: "Team Size",      value: "1 to 5 members" },
+  { label: "Build Time",     value: "7 days" },
+  { label: "Demo Format",    value: "7–10 min per team" },
+  { label: "Submission",     value: "Working prototype + source files + short explanation" },
+  { label: "Entry Fee",      value: "Free" },
+  { label: "AI Tools",       value: "Allowed (must understand usage)" },
+  { label: "Teacher POC",    value: "1 teacher coordinator per team" },
 ];
 
 export default function WhyParticipateSection() {
@@ -66,7 +73,7 @@ export default function WhyParticipateSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: 0.06, ease: "easeOut" }}
             >
-              Elevate Your Skills.
+              Explore. Build. Improve.
             </motion.h2>
             <motion.p
               className="text-base sm:text-[17px] mb-10"
@@ -76,38 +83,38 @@ export default function WhyParticipateSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: 0.12, ease: "easeOut" }}
             >
-              More than just a hackathon — an opportunity to build real products, gain industry visibility, and turn curiosity into impact.
+              No perfect idea required. Start with a problem. Build something you care about.
             </motion.p>
 
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {benefits.map((item, index) => {
                 const Icon = item.icon;
                 return (
                   <motion.div
                     key={item.title}
-                    className="flex items-start gap-3 group"
+                    className="flex items-start gap-3"
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.35, delay: 0.08 + index * 0.05, ease: "easeOut" }}
                   >
                     <div
-                      className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-200"
+                      className="mt-0.5 w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
                       style={{
                         background: "var(--accent-dim)",
                         border: "1px solid var(--border-accent)",
                         color: "var(--accent)",
                       }}
                     >
-                      <Check style={{ width: 11, height: 11, strokeWidth: 2.5 }} />
+                      <Icon style={{ width: 13, height: 13 }} />
                     </div>
                     <div>
                       <span className="text-sm font-semibold" style={{ color: "var(--text)" }}>
                         {item.title}
                       </span>
-                      <span className="text-sm ml-1.5" style={{ color: "var(--text-muted)" }}>
-                        — {item.desc}
-                      </span>
+                      <p className="text-xs mt-0.5 leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                        {item.desc}
+                      </p>
                     </div>
                   </motion.div>
                 );
@@ -115,7 +122,7 @@ export default function WhyParticipateSection() {
             </div>
           </div>
 
-          {/* Right: Clean event details panel */}
+          {/* Right: Event at a Glance */}
           <motion.div
             className="lg:col-span-5"
             initial={{ opacity: 0, y: 16 }}
@@ -145,15 +152,12 @@ export default function WhyParticipateSection() {
                 {specs.map((spec, i) => (
                   <div
                     key={spec.label}
-                    className="flex items-center justify-between px-5 py-3.5"
+                    className="flex items-center justify-between px-5 py-3"
                     style={{
                       borderTop: i === 0 ? "none" : "1px solid var(--border)",
                     }}
                   >
-                    <span
-                      className="text-sm"
-                      style={{ color: "var(--text-muted)" }}
-                    >
+                    <span className="text-sm" style={{ color: "var(--text-muted)" }}>
                       {spec.label}
                     </span>
                     <span
@@ -175,9 +179,24 @@ export default function WhyParticipateSection() {
                 }}
               >
                 <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-                  Birla Institute of Applied Sciences &bull; 2026 Edition
+                  TechSpark &bull; School Innovation Hackathon &bull; 2026 Edition
                 </p>
               </div>
+            </div>
+
+            {/* AI tools note */}
+            <div
+              className="mt-4 p-4 rounded-xl text-sm"
+              style={{
+                background: "var(--accent-dim)",
+                border: "1px solid var(--border-accent)",
+                color: "var(--accent)",
+              }}
+            >
+              <span className="font-semibold">AI tools are allowed</span>
+              <span style={{ color: "var(--text-muted)" }}>
+                {" "}— but you must understand what you build. Judges will ask questions and may request a small live change.
+              </span>
             </div>
           </motion.div>
 

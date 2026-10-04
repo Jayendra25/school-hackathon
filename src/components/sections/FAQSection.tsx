@@ -6,29 +6,44 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "Who can participate?",
+    question: "Who can participate in TechSpark?",
     answer:
-      "Students currently enrolled in schools (Classes 9–12) or colleges/universities (Undergraduate/Postgraduate) are eligible to participate. Both beginner and experienced coders are welcome!",
+      "TechSpark is open to school students. Each team must also have one school teacher as a coordinator. Teams of 1 to 5 students are eligible to participate.",
   },
   {
-    question: "Team size?",
+    question: "What is the team size?",
     answer:
-      "You can participate individually or in teams of up to 4 members. Inter-college and inter-school teams are fully allowed and encouraged.",
+      "You can participate solo or in a team of up to 5 students. Every team must bring their school-teacher coordinator on the final day.",
   },
   {
-    question: "Registration fee?",
+    question: "Is there a registration fee?",
     answer:
-      "Registration is 100% FREE. There are no hidden fees for submitting ideas or participating in the 24-hour hackathon.",
+      "No, participation is completely free. There are no hidden fees for registration or submission.",
   },
   {
-    question: "Requirements?",
+    question: "What are the 3 tracks?",
     answer:
-      "A valid student ID card, a laptop with your development environment set up, and enthusiasm to build! High-speed WiFi and refreshments will be provided.",
+      "TechSpark has three tracks: Web Development (HTML, CSS, JavaScript or frameworks like MERN/PHP), Android App Development (MIT App Inventor, Kotlin, Java or similar), and AI & Innovation (chatbots, smart assistants, automation or any meaningful AI solution).",
   },
   {
-    question: "Certificates?",
+    question: "Can we use AI tools to build our project?",
     answer:
-      "Yes. All registered participants who submit a valid project will receive official verified certificates of participation from Birla Institute of Applied Sciences and Coding Blocks.",
+      "Yes — AI tools are allowed for brainstorming, learning, debugging and development. However, during evaluation you must be able to explain your idea, code/logic, prompts and implementation. Judges may ask questions or request a small live change.",
+  },
+  {
+    question: "What do we need to submit?",
+    answer:
+      "A working prototype, source/project files and a short explanation of your problem and solution. On the final day, bring your laptop/tablet/phone to demonstrate the project, a backup of your files, your school ID and your teacher coordinator.",
+  },
+  {
+    question: "How is the judging done?",
+    answer:
+      "Judges evaluate teams on: Idea & Creativity, Problem Relevance, Working Prototype, Technical Understanding, Live Modification (a small change requested on the spot) and Presentation. The focus is on useful ideas and genuine understanding — not just complexity.",
+  },
+  {
+    question: "What do winners receive?",
+    answer:
+      "There are overall awards (Hackathon Champion, 1st & 2nd Runner-Up), track awards (Best Web Project, Best Android App, Best AI Innovation), and special awards (Most Innovative Idea, Best Social Impact, Best Presentation). All finalists receive Participation Certificates.",
   },
 ];
 
@@ -68,7 +83,7 @@ export default function FAQSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.12, ease: "easeOut" }}
           >
-            Everything you need to know before registering for Hackathon 2026.
+            Everything you need to know before registering for TechSpark 2026.
           </motion.p>
         </div>
 
@@ -84,12 +99,12 @@ export default function FAQSection() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: index * 0.05, ease: "easeOut" }}
+                transition={{ duration: 0.35, delay: index * 0.04, ease: "easeOut" }}
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full px-5 py-4 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none focus-visible:ring-2 transition-colors duration-150"
+                  className="w-full px-5 py-4 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
                   style={{
                     background: isOpen ? "var(--bg-raised)" : "var(--surface)",
                     color: "var(--text)",
