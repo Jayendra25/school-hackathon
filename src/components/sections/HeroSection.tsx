@@ -1,10 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Zap } from "lucide-react";
+import { Zap } from "lucide-react";
 
-const REGISTER_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeesu7fm6jiaN94gQX_J79xhD1qCbG2wyG83CsZdKjvsi4EWQ/viewform?usp=publish-editor";
 
 export default function HeroSection() {
   return (
@@ -72,17 +70,11 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: 0.24, ease: "easeOut" }}
         >
-          <a
-            href={REGISTER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary w-full sm:w-auto"
-          >
-            Register Now
-            <ArrowRight style={{ width: 15, height: 15 }} />
-          </a>
-          <a href="#about" className="btn-secondary w-full sm:w-auto">
+          <a href="#about" className="btn-primary w-full sm:w-auto">
             Learn More
+          </a>
+          <a href="#themes" className="btn-secondary w-full sm:w-auto">
+            View Tracks
           </a>
         </motion.div>
 

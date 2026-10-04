@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 
 const REGISTER_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeesu7fm6jiaN94gQX_J79xhD1qCbG2wyG83CsZdKjvsi4EWQ/viewform?usp=publish-editor";
+  "/register";
 
 export default function CTASection() {
   return (
@@ -60,8 +60,8 @@ export default function CTASection() {
         >
           <a
             href={REGISTER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            
+            
             className="btn-primary"
             style={{ padding: "14px 36px", fontSize: 15 }}
           >

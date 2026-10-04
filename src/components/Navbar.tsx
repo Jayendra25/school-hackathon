@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useTheme } from "./ThemeProvider";
 
 const REGISTER_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeesu7fm6jiaN94gQX_J79xhD1qCbG2wyG83CsZdKjvsi4EWQ/viewform?usp=publish-editor";
+  "/register";
 
 const navItems = [
   { label: "About",    href: "#about" },
@@ -218,8 +218,8 @@ export default function Navbar() {
           {/* Register CTA */}
           <a
             href={REGISTER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            
+            
             className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-[13px] font-semibold rounded-lg transition-opacity duration-150 hover:opacity-85"
             style={{
               background: "var(--text)",
@@ -279,8 +279,8 @@ export default function Navbar() {
             <div className="pt-1.5 mt-1" style={{ borderTop: "1px solid var(--border)" }}>
               <a
                 href={REGISTER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                
+                
                 className="block w-full text-center px-3.5 py-2.5 rounded-lg text-sm font-semibold"
                 style={{ background: "var(--text)", color: "var(--bg)" }}
               >

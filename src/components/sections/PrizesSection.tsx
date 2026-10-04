@@ -1,10 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Trophy, Medal, Star, Globe, Smartphone, Bot, Lightbulb, Heart, Mic, ArrowRight } from "lucide-react";
-
-const REGISTER_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeesu7fm6jiaN94gQX_J79xhD1qCbG2wyG83CsZdKjvsi4EWQ/viewform?usp=publish-editor";
+import { Trophy, Medal, Star, Globe, Smartphone, Bot, Lightbulb, Heart, Mic } from "lucide-react";
 
 const mainAwards = [
   {
@@ -228,15 +225,6 @@ export default function PrizesSection() {
               {" "}— Every eligible student who completes the final submission and showcase receives a Certificate of Participation.
             </p>
           </div>
-          <a
-            href={REGISTER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary flex-shrink-0"
-          >
-            Claim Your Spot
-            <ArrowRight className="w-4 h-4" />
-          </a>
         </motion.div>
 
       </div>
