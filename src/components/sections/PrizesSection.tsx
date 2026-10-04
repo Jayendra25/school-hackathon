@@ -3,6 +3,9 @@
 import { motion } from "framer-motion";
 import { Trophy, Award, Gift, ShieldCheck, ArrowRight } from "lucide-react";
 
+const REGISTER_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeesu7fm6jiaN94gQX_J79xhD1qCbG2wyG83CsZdKjvsi4EWQ/viewform?usp=publish-editor";
+
 const rewards = [
   {
     icon: Award,
@@ -47,7 +50,8 @@ export default function PrizesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-[64px] font-bold text-white tracking-[-0.03em] leading-tight"
+            className="text-4xl sm:text-5xl lg:text-[64px] font-bold tracking-[-0.03em] leading-tight"
+            style={{ color: "var(--text)" }}
           >
             Recognizing Excellence.
           </motion.h2>
@@ -56,7 +60,8 @@ export default function PrizesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-[18px] text-[#A1A1AA] mt-4 leading-relaxed"
+            className="text-[18px] mt-4 leading-relaxed"
+            style={{ color: "var(--text-muted)" }}
           >
             Compete for cash rewards, premium goodies, and certificates backed by Coding Blocks &amp; Birla Institute.
           </motion.p>
@@ -115,7 +120,12 @@ export default function PrizesSection() {
           </div>
 
           <div>
-            <a href="#register" className="btn-primary">
+            <a
+              href={REGISTER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
               <span>Claim Your Spot</span>
               <ArrowRight className="w-4 h-4" />
             </a>

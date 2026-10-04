@@ -43,7 +43,7 @@ const steps = [
 
 export default function ScheduleSection() {
   return (
-    <section id="timeline" className="section-wrapper bg-black">
+    <section id="timeline" className="section-wrapper">
       <div className="app-container">
         
         {/* Section Header */}
@@ -62,7 +62,8 @@ export default function ScheduleSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-[64px] font-bold text-white tracking-[-0.03em] leading-tight"
+            className="text-4xl sm:text-5xl lg:text-[64px] font-bold tracking-[-0.03em] leading-tight"
+            style={{ color: "var(--text)" }}
           >
             Event Timeline.
           </motion.h2>
@@ -71,7 +72,8 @@ export default function ScheduleSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-[18px] text-[#A1A1AA] max-w-2xl mt-4 leading-relaxed"
+            className="text-[18px] max-w-2xl mt-4 leading-relaxed"
+            style={{ color: "var(--text-muted)" }}
           >
             A clear horizontal roadmap guiding your journey from registration to the winners&apos; podium.
           </motion.p>
@@ -106,11 +108,11 @@ export default function ScheduleSection() {
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-white transition-colors">
+                    <h3 className="text-xl font-bold mb-2 tracking-tight" style={{ color: "var(--text)" }}>
                       {item.phase}
                     </h3>
 
-                    <p className="text-sm text-[#A1A1AA] leading-relaxed">
+                    <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
                       {item.desc}
                     </p>
                   </div>

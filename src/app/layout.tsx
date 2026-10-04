@@ -32,11 +32,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <head>
         <meta name="theme-color" content="#000000" />
       </head>
-      <body className={`${inter.className} min-h-screen bg-black text-white antialiased selection:bg-[#8B5CF6]/30 selection:text-white`}>
+      <body className={`${inter.className} min-h-screen antialiased selection:bg-[#8B5CF6]/30 selection:text-white`}>
         {children}
       </body>
     </html>

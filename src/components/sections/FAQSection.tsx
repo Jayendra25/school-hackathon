@@ -40,7 +40,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="section-wrapper bg-black">
+    <section id="faq" className="section-wrapper">
       <div className="app-container">
         
         {/* Section Header */}

@@ -33,7 +33,7 @@ const benefits = [
 
 export default function WhyParticipateSection() {
   return (
-    <section id="why-participate" className="section-wrapper bg-black">
+    <section id="why-participate" className="section-wrapper">
       <div className="app-container">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -54,7 +54,8 @@ export default function WhyParticipateSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl sm:text-5xl lg:text-[64px] font-bold text-white tracking-[-0.03em] leading-tight mb-6"
+              className="text-4xl sm:text-5xl lg:text-[64px] font-bold tracking-[-0.03em] leading-tight mb-6"
+              style={{ color: "var(--text)" }}
             >
               Elevate Your Skills.
             </motion.h2>
@@ -63,7 +64,8 @@ export default function WhyParticipateSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-[18px] text-[#A1A1AA] leading-relaxed mb-10"
+              className="text-[18px] leading-relaxed mb-10"
+              style={{ color: "var(--text-muted)" }}
             >
               More than just a hackathon—an opportunity to build real products, gain industry visibility, and turn curiosity into impact.
             </motion.p>
@@ -84,7 +86,7 @@ export default function WhyParticipateSection() {
                       <Check className="w-3.5 h-3.5 stroke-[3]" />
                     </div>
                     <div>
-                      <h3 className="text-[18px] font-semibold text-white">
+                      <h3 className="text-[18px] font-semibold" style={{ color: "var(--text)" }}>
                         {item.title}
                       </h3>
                       <p className="text-sm text-[#A1A1AA] mt-0.5 leading-relaxed">

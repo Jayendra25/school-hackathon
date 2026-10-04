@@ -5,7 +5,7 @@ import { GraduationCap, Code2, Sparkles } from "lucide-react";
 
 export default function SponsorsSection() {
   return (
-    <section id="sponsors" className="section-wrapper bg-black">
+    <section id="sponsors" className="section-wrapper">
       <div className="app-container text-center">
         
         {/* Section Header */}
@@ -24,7 +24,8 @@ export default function SponsorsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-[64px] font-bold text-white tracking-[-0.03em] leading-tight"
+            className="text-4xl sm:text-5xl lg:text-[64px] font-bold tracking-[-0.03em] leading-tight"
+            style={{ color: "var(--text)" }}
           >
             Backed by Leaders.
           </motion.h2>
@@ -33,7 +34,8 @@ export default function SponsorsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-[18px] text-[#A1A1AA] mt-4 leading-relaxed"
+            className="text-[18px] mt-4 leading-relaxed"
+            style={{ color: "var(--text-muted)" }}
           >
             Combining academic heritage with industry-leading technical mentorship.
           </motion.p>
@@ -52,13 +54,13 @@ export default function SponsorsSection() {
             <div className="w-14 h-14 rounded-2xl bg-zinc-900 border border-white/10 flex items-center justify-center text-[#8B5CF6] mb-5 group-hover:scale-105 transition-transform duration-200">
               <GraduationCap className="w-7 h-7" />
             </div>
-            <span className="text-xs uppercase font-mono tracking-widest text-[#A1A1AA] mb-1 font-semibold">
+            <span className="text-xs uppercase font-mono tracking-widest mb-1 font-semibold" style={{ color: "var(--text-muted)" }}>
               Host Institution
             </span>
-            <h3 className="text-[24px] font-bold text-white tracking-tight">
+            <h3 className="text-[24px] font-bold tracking-tight" style={{ color: "var(--text)" }}>
               Birla Institute
             </h3>
-            <p className="text-sm text-[#A1A1AA] mt-1">
+            <p className="text-sm mt-1" style={{ color: "var(--text-muted)" }}>
               of Applied Sciences, Bhimtal
             </p>
           </motion.div>
@@ -77,10 +79,10 @@ export default function SponsorsSection() {
             <span className="text-xs uppercase font-mono tracking-widest text-[#8B5CF6] mb-1 font-semibold">
               Powered By
             </span>
-            <h3 className="text-[24px] font-bold text-white tracking-tight">
+            <h3 className="text-[24px] font-bold tracking-tight" style={{ color: "var(--text)" }}>
               Coding Blocks
             </h3>
-            <p className="text-sm text-[#A1A1AA] mt-1">
+            <p className="text-sm mt-1" style={{ color: "var(--text-muted)" }}>
               EdTech &amp; Mentorship Partner
             </p>
           </motion.div>
@@ -96,13 +98,13 @@ export default function SponsorsSection() {
             <div className="w-14 h-14 rounded-2xl bg-zinc-900 border border-white/10 flex items-center justify-center text-[#8B5CF6] mb-5 group-hover:scale-105 transition-transform duration-200">
               <Sparkles className="w-7 h-7" />
             </div>
-            <span className="text-xs uppercase font-mono tracking-widest text-[#A1A1AA] mb-1 font-semibold">
+            <span className="text-xs uppercase font-mono tracking-widest mb-1 font-semibold" style={{ color: "var(--text-muted)" }}>
               Student Body
             </span>
-            <h3 className="text-[24px] font-bold text-white tracking-tight">
+            <h3 className="text-[24px] font-bold tracking-tight" style={{ color: "var(--text)" }}>
               BIAS Tech Club
             </h3>
-            <p className="text-sm text-[#A1A1AA] mt-1">
+            <p className="text-sm mt-1" style={{ color: "var(--text-muted)" }}>
               Student Innovation Cell
             </p>
           </motion.div>
