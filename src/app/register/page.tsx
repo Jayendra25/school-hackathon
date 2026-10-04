@@ -1,8 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, Zap, Clock, Users, Layers, CheckCircle } from "lucide-react";
+import { ArrowLeft, Clock, Users, Layers, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+import { ThemeProvider } from "@/components/ThemeProvider";
+
+const DynamicGradient = dynamic(() => import("@/components/DynamicGradient"), { ssr: false });
 
 const FORM_URL = "https://forms.gle/wd3SGLHMUVhqeUDG6";
 
@@ -23,10 +27,12 @@ const checklist = [
 
 export default function RegisterPage() {
   return (
-    <div
-      className="min-h-screen"
-      style={{ backgroundColor: "var(--bg)", color: "var(--text)" }}
-    >
+    <ThemeProvider>
+      <DynamicGradient />
+      <div
+        className="min-h-screen relative"
+        style={{ backgroundColor: "transparent", color: "var(--text)", zIndex: 1 }}
+      >
       {/* Top bar */}
       <div
         className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3"
@@ -51,17 +57,7 @@ export default function RegisterPage() {
           <span className="text-gradient-gold font-mono text-xs ml-1">2026</span>
         </span>
 
-        <div
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold"
-          style={{
-            background: "var(--accent-dim)",
-            border: "1px solid var(--border-accent)",
-            color: "var(--accent)",
-          }}
-        >
-          <Zap style={{ width: 10, height: 10 }} />
-          Registration Open
-        </div>
+        <div className="w-[120px]" />
       </div>
 
       {/* Page content */}
@@ -212,14 +208,15 @@ export default function RegisterPage() {
               WhatsApp Aditya
             </a>
             {" "}·{" "}
-            <a href="https://wa.me/917017398809" target="_blank" rel="noopener noreferrer"
+            <a href="https://wa.me/917351932450" target="_blank" rel="noopener noreferrer"
               className="underline underline-offset-2 hover:opacity-80" style={{ color: "var(--text-secondary)" }}>
-              WhatsApp Bhumika
+              WhatsApp Ritesh
             </a>
           </motion.p>
 
         </div>
       </div>
     </div>
+    </ThemeProvider>
   );
 }

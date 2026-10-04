@@ -20,7 +20,7 @@ const steps = [
     step: "03",
     phase: "Orientation",
     icon: BookOpen,
-    desc: "Rules, tracks, example projects, judging criteria, AI-use policy and submission process are explained to all participants.",
+    desc: "College faculty and student coordinators from Birla Institute will visit schools to explain the rules, tracks, example projects, judging criteria, AI-use policy and submission process to all participants.",
   },
   {
     step: "04",
@@ -32,25 +32,25 @@ const steps = [
     step: "05",
     phase: "Build Week Begins",
     icon: Clock,
-    desc: "The 7-day implementation period starts. Students ideate, design, code, test and improve their prototypes.",
+    desc: "The 7-day build phase starts. Students work from home or school — no need to come to campus during these days.",
   },
   {
     step: "06",
     phase: "7-Day Build Sprint",
     icon: Code2,
-    desc: "Students work on their projects. Important notices and mentor instructions are shared on the official WhatsApp channel.",
+    desc: "Build at your own pace from anywhere — home, school, library. Mentor instructions and updates shared on the official WhatsApp channel.",
   },
   {
     step: "07",
-    phase: "Final Showcase",
+    phase: "Day 8 — Showcase & Judging",
     icon: Presentation,
-    desc: "Teams report at the venue, present their project with a 7–10 min demo, answer judge questions and tackle the live modification challenge.",
+    desc: "All teams report to Birla Institute of Applied Sciences campus. Live demo (7–10 min), judge Q&A, and an on-the-spot live modification challenge.",
   },
   {
     step: "08",
     phase: "Results & Awards",
     icon: Trophy,
-    desc: "Winners announced. Trophies, prizes and certificates distributed. Special category awards presented.",
+    desc: "Winners announced on campus. Trophies, prizes and certificates distributed. Special category awards presented.",
   },
 ];
 

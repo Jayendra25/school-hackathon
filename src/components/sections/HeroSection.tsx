@@ -58,9 +58,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.18, ease: "easeOut" }}
         >
-          7 days to turn an idea into a working prototype. A challenge for school
-          students to explore, create and showcase original ideas through Web
-          Development, Android Apps and AI.
+          7 days to build from home or school, then present your prototype live on Day 8 at the Birla campus. Web Development, Android Apps and AI — pick your track and ship it.
         </motion.p>
 
         {/* CTA Buttons */}

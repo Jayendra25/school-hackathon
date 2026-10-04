@@ -14,10 +14,10 @@ const contacts = [
     colorBorder: "var(--border-accent)",
   },
   {
-    name: "Bhumika Mehra",
+    name: "Ritesh Saxena",
     role: "Event Coordinator",
-    phone: "7017398809",
-    initial: "B",
+    phone: "7351932450",
+    initial: "R",
     color: "#f6d365",
     colorDim: "rgba(246,211,101,0.10)",
     colorBorder: "rgba(246,211,101,0.35)",
@@ -149,7 +149,7 @@ export default function ContactSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.2 }}
         >
-          Support hours: 10:00 AM – 6:00 PM &nbsp;·&nbsp; WhatsApp and Call available on the same numbers
+          Support hours: 10:00 AM – 10:00 PM &nbsp;·&nbsp; WhatsApp and Call available on the same numbers
         </motion.p>
 
       </div>
