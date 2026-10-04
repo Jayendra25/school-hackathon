@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -36,7 +36,7 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#000000" />
       </head>
-      <body className={`${inter.className} min-h-screen antialiased selection:bg-[#8B5CF6]/30 selection:text-white`}>
+      <body className={`${spaceGrotesk.className} min-h-screen antialiased selection:bg-[#8B5CF6]/30 selection:text-white`}>
         {children}
       </body>
     </html>
