@@ -33,11 +33,11 @@ export default function HeroSection() {
           </span>
           <span className="w-1 h-1 rounded-full bg-zinc-600" />
           <span className="text-xs sm:text-sm font-medium text-[#A1A1AA]">
-            Powered by <span className="text-white font-semibold">Coding Ninjas</span>
+            Powered by <span className="text-white font-semibold">Coding Blocks</span>
           </span>
-          {/* Coding Ninjas Logo */}
+          {/* Coding Blocks Logo */}
           <div className="w-7 h-7 rounded-full overflow-hidden bg-white flex items-center justify-center flex-shrink-0">
-            <Image src="/coding-ninja-logo.jpeg" alt="Coding Ninjas Logo" width={28} height={28} className="object-contain w-full h-full" />
+            <Image src="/codingblocksindia_logo.jpeg" alt="Coding Blocks Logo" width={28} height={28} className="object-contain w-full h-full" />
           </div>
         </motion.div>
 
