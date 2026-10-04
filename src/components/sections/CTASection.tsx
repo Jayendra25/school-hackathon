@@ -8,72 +8,67 @@ const REGISTER_URL =
 
 export default function CTASection() {
   return (
-    <section id="register" className="section-wrapper relative overflow-hidden text-center">
-      {/* Animated radial glow */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] rounded-full pointer-events-none"
-        style={{ backgroundColor: "var(--accent-glow)", filter: "blur(160px)" }}
-        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+    <section
+      id="register"
+      className="section-wrapper text-center"
+      style={{ position: "relative", overflow: "hidden" }}
+    >
+      {/* Subtle static glow — no animation */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[360px] rounded-full pointer-events-none"
+        style={{ backgroundColor: "var(--accent-glow)", filter: "blur(130px)" }}
       />
 
       <div className="app-container relative z-10">
 
         <motion.div
+          className="badge-pill mb-5"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="badge-pill mb-6"
+          transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          Final Call For Innovators
+          Final Call
         </motion.div>
 
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          className="text-[40px] sm:text-[56px] lg:text-[68px] font-bold tracking-[-0.025em] leading-[1.05] mb-5"
+          style={{ color: "var(--text)" }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-5xl sm:text-7xl lg:text-[96px] font-extrabold tracking-[-0.03em] leading-[0.95] mb-8"
-          style={{ color: "var(--text)" }}
+          transition={{ duration: 0.5, delay: 0.06, ease: "easeOut" }}
         >
-          READY TO BUILD?
+          Ready to Build?
         </motion.h2>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          className="text-base sm:text-[17px] max-w-md mx-auto mb-10"
+          style={{ color: "var(--text-muted)", lineHeight: "1.7" }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-[18px] max-w-xl mx-auto mb-12 leading-relaxed"
-          style={{ color: "var(--text-muted)" }}
+          transition={{ duration: 0.45, delay: 0.12, ease: "easeOut" }}
         >
           Join 300+ student developers in 24 hours of non-stop building, learning, and competing for ₹25,000 in prizes and swag.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
-          className="inline-block"
+          transition={{ duration: 0.4, delay: 0.18, ease: "easeOut" }}
         >
-          <motion.a
+          <a
             href={REGISTER_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary text-xl px-12 py-5 shadow-2xl"
-            whileHover={{ scale: 1.06, boxShadow: "0 0 60px var(--accent-glow)" }}
-            whileTap={{ scale: 0.97 }}
+            className="btn-primary"
+            style={{ padding: "14px 32px", fontSize: 15 }}
           >
-            <span>Register Now</span>
-            <motion.span
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.4, repeat: Infinity }}
-            >
-              <ArrowRight className="w-5 h-5" />
-            </motion.span>
-          </motion.a>
+            Register Now
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </motion.div>
 
       </div>

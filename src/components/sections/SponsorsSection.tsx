@@ -3,111 +3,112 @@
 import { motion } from "framer-motion";
 import { GraduationCap, Code2, Sparkles } from "lucide-react";
 
+const orgs = [
+  {
+    icon: GraduationCap,
+    label: "Host Institution",
+    name: "Birla Institute",
+    sub: "of Applied Sciences, Bhimtal",
+  },
+  {
+    icon: Code2,
+    label: "Powered By",
+    name: "Coding Blocks",
+    sub: "EdTech & Mentorship Partner",
+    featured: true,
+  },
+  {
+    icon: Sparkles,
+    label: "Student Body",
+    name: "BIAS Tech Club",
+    sub: "Student Innovation Cell",
+  },
+];
+
 export default function SponsorsSection() {
   return (
     <section id="sponsors" className="section-wrapper">
       <div className="app-container text-center">
-        
+
         {/* Section Header */}
-        <div className="mb-16 max-w-3xl mx-auto">
+        <div className="mb-12 max-w-2xl mx-auto">
           <motion.div
+            className="badge-pill mb-4"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="badge-pill mb-4"
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            Organizers &amp; Partners
+            Organizers & Partners
           </motion.div>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            className="text-[32px] sm:text-[40px] lg:text-[48px] font-bold tracking-[-0.02em] leading-[1.1]"
+            style={{ color: "var(--text)" }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-[64px] font-bold tracking-[-0.03em] leading-tight"
-            style={{ color: "var(--text)" }}
+            transition={{ duration: 0.45, delay: 0.06, ease: "easeOut" }}
           >
             Backed by Leaders.
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base sm:text-[17px] mt-3"
+            style={{ color: "var(--text-muted)", lineHeight: "1.7" }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-[18px] mt-4 leading-relaxed"
-            style={{ color: "var(--text-muted)" }}
+            transition={{ duration: 0.45, delay: 0.12, ease: "easeOut" }}
           >
             Combining academic heritage with industry-leading technical mentorship.
           </motion.p>
         </div>
 
-        {/* Clean Centered Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {/* Birla Institute */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="card-glass p-8 flex flex-col items-center justify-center text-center group"
-          >
-            <div className="w-14 h-14 rounded-2xl bg-zinc-900 border border-white/10 flex items-center justify-center text-[#8B5CF6] mb-5 group-hover:scale-105 transition-transform duration-200">
-              <GraduationCap className="w-7 h-7" />
-            </div>
-            <span className="text-xs uppercase font-mono tracking-widest mb-1 font-semibold" style={{ color: "var(--text-muted)" }}>
-              Host Institution
-            </span>
-            <h3 className="text-[24px] font-bold tracking-tight" style={{ color: "var(--text)" }}>
-              Birla Institute
-            </h3>
-            <p className="text-sm mt-1" style={{ color: "var(--text-muted)" }}>
-              of Applied Sciences, Bhimtal
-            </p>
-          </motion.div>
-
-          {/* Coding Blocks */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="card-glass p-8 flex flex-col items-center justify-center text-center group border-[#8B5CF6]/30"
-          >
-            <div className="w-14 h-14 rounded-2xl bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 flex items-center justify-center text-[#8B5CF6] mb-5 group-hover:scale-105 transition-transform duration-200">
-              <Code2 className="w-7 h-7" />
-            </div>
-            <span className="text-xs uppercase font-mono tracking-widest text-[#8B5CF6] mb-1 font-semibold">
-              Powered By
-            </span>
-            <h3 className="text-[24px] font-bold tracking-tight" style={{ color: "var(--text)" }}>
-              Coding Blocks
-            </h3>
-            <p className="text-sm mt-1" style={{ color: "var(--text-muted)" }}>
-              EdTech &amp; Mentorship Partner
-            </p>
-          </motion.div>
-
-          {/* Student Innovation Cell */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="card-glass p-8 flex flex-col items-center justify-center text-center group"
-          >
-            <div className="w-14 h-14 rounded-2xl bg-zinc-900 border border-white/10 flex items-center justify-center text-[#8B5CF6] mb-5 group-hover:scale-105 transition-transform duration-200">
-              <Sparkles className="w-7 h-7" />
-            </div>
-            <span className="text-xs uppercase font-mono tracking-widest mb-1 font-semibold" style={{ color: "var(--text-muted)" }}>
-              Student Body
-            </span>
-            <h3 className="text-[24px] font-bold tracking-tight" style={{ color: "var(--text)" }}>
-              BIAS Tech Club
-            </h3>
-            <p className="text-sm mt-1" style={{ color: "var(--text-muted)" }}>
-              Student Innovation Cell
-            </p>
-          </motion.div>
+        {/* Org Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+          {orgs.map((org, index) => {
+            const Icon = org.icon;
+            return (
+              <motion.div
+                key={org.name}
+                className="card-glass p-6 flex flex-col items-center text-center"
+                style={org.featured ? { borderColor: "var(--border-accent)" } : undefined}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.07, ease: "easeOut" }}
+              >
+                <div
+                  className="icon-box mb-4"
+                  style={{
+                    width: 44,
+                    height: 44,
+                    background: org.featured ? "var(--accent-dim)" : undefined,
+                    borderColor: org.featured ? "var(--border-accent)" : undefined,
+                  }}
+                >
+                  <Icon style={{ width: 20, height: 20 }} />
+                </div>
+                <p
+                  className="text-[10px] font-semibold uppercase tracking-widest mb-1"
+                  style={{ color: org.featured ? "var(--accent)" : "var(--text-muted)" }}
+                >
+                  {org.label}
+                </p>
+                <h3
+                  className="text-base font-semibold"
+                  style={{ color: "var(--text)" }}
+                >
+                  {org.name}
+                </h3>
+                <p
+                  className="text-xs mt-0.5"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  {org.sub}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
 
       </div>

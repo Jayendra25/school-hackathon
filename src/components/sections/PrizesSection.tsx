@@ -7,110 +7,106 @@ const REGISTER_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSeesu7fm6jiaN94gQX_J79xhD1qCbG2wyG83CsZdKjvsi4EWQ/viewform?usp=publish-editor";
 
 const rewards = [
-  {
-    icon: Award,
-    title: "₹25,000 Cash Pool",
-    desc: "Cash prize distributed among top innovative teams.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Official Certificates",
-    desc: "Verified merit and participation credentials from BIAS.",
-  },
-  {
-    icon: Gift,
-    title: "Coding Blocks Swag",
-    desc: "Exclusive t-shirts, backpacks, stickers & merchandise.",
-  },
-  {
-    icon: Trophy,
-    title: "Mentorship & Perks",
-    desc: "Discount vouchers and direct guidance from industry pros.",
-  },
+  { icon: Award,      title: "₹25,000 Cash Pool",      desc: "Cash prize distributed among top innovative teams." },
+  { icon: ShieldCheck, title: "Official Certificates",  desc: "Verified merit and participation credentials from BIAS." },
+  { icon: Gift,       title: "Coding Blocks Swag",      desc: "Exclusive t-shirts, backpacks, stickers & merchandise." },
+  { icon: Trophy,     title: "Mentorship & Perks",      desc: "Discount vouchers and direct guidance from industry pros." },
 ];
 
 export default function PrizesSection() {
   return (
-    <section id="prizes" className="section-wrapper bg-black">
+    <section id="prizes" className="section-wrapper">
       <div className="app-container">
-        
+
         {/* Section Header */}
-        <div className="mb-16 text-center max-w-3xl mx-auto">
+        <div className="mb-12 text-center max-w-2xl mx-auto">
           <motion.div
+            className="badge-pill mb-4"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="badge-pill mb-4"
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
             Prize Pool
           </motion.div>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            className="text-[32px] sm:text-[40px] lg:text-[48px] font-bold tracking-[-0.02em] leading-[1.1]"
+            style={{ color: "var(--text)" }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-[64px] font-bold tracking-[-0.03em] leading-tight"
-            style={{ color: "var(--text)" }}
+            transition={{ duration: 0.45, delay: 0.06, ease: "easeOut" }}
           >
             Recognizing Excellence.
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base sm:text-[17px] mt-3"
+            style={{ color: "var(--text-muted)", lineHeight: "1.7" }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-[18px] mt-4 leading-relaxed"
-            style={{ color: "var(--text-muted)" }}
+            transition={{ duration: 0.45, delay: 0.12, ease: "easeOut" }}
           >
-            Compete for cash rewards, premium goodies, and certificates backed by Coding Blocks &amp; Birla Institute.
+            Compete for cash rewards, premium goodies, and certificates backed by Coding Blocks & Birla Institute.
           </motion.p>
         </div>
 
-        {/* Central Apple-style Keynote Card */}
+        {/* Prize card */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          className="card-glass max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="card-glass max-w-4xl mx-auto p-8 sm:p-12 text-center relative overflow-hidden"
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          {/* Subtle top spotlight */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-24 bg-[#8B5CF6]/15 blur-3xl rounded-full pointer-events-none" />
-
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-zinc-900 border border-white/10 text-[#8B5CF6] mb-6 shadow-lg">
-            <Trophy className="w-8 h-8" />
+          {/* Card header */}
+          <div
+            className="p-8 sm:p-10 text-center"
+            style={{ borderBottom: "1px solid var(--border)" }}
+          >
+            <div className="icon-box mx-auto mb-5" style={{ width: 52, height: 52, borderRadius: 12 }}>
+              <Trophy style={{ width: 22, height: 22 }} />
+            </div>
+            <p
+              className="text-xs font-semibold uppercase tracking-widest mb-3"
+              style={{ color: "var(--accent)" }}
+            >
+              Grand Winner & Excellence Award
+            </p>
+            <div
+              className="text-[56px] sm:text-[72px] font-bold tracking-tight leading-none mb-3"
+              style={{ color: "var(--text)" }}
+            >
+              ₹25,000
+            </div>
+            <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+              Total prize bounty along with certificates, goodies, and swag kits.
+            </p>
           </div>
 
-          <div className="text-xs font-mono uppercase tracking-widest text-[#8B5CF6] mb-2 font-semibold">
-            Grand Winner &amp; Excellence Award
-          </div>
-
-          <h3 className="text-5xl sm:text-7xl font-extrabold text-white tracking-tight mb-4">
-            ₹25,000
-          </h3>
-
-          <p className="text-[18px] text-[#A1A1AA] max-w-md mx-auto mb-10">
-            Total prize bounty along with certificates, goodies, and swag kits.
-          </p>
-
-          {/* 4 Feature Badges */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left mb-10 pt-8 border-t border-white/10">
-            {rewards.map((reward) => {
+          {/* Rewards grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2">
+            {rewards.map((reward, i) => {
               const Icon = reward.icon;
+              const isLastRow = i >= 2;
+              const isOdd = i % 2 === 1;
               return (
                 <div
                   key={reward.title}
-                  className="p-4 rounded-xl bg-black/40 border border-white/5 flex items-start gap-4"
+                  className="p-6 flex items-start gap-4"
+                  style={{
+                    borderTop: "1px solid var(--border)",
+                    borderLeft: isOdd ? "1px solid var(--border)" : undefined,
+                  }}
                 >
-                  <div className="w-9 h-9 rounded-lg bg-[#8B5CF6]/10 border border-[#8B5CF6]/20 flex items-center justify-center text-[#8B5CF6] flex-shrink-0 mt-0.5">
-                    <Icon className="w-4 h-4" />
+                  <div className="icon-box flex-shrink-0 mt-0.5" style={{ width: 36, height: 36, borderRadius: 8 }}>
+                    <Icon style={{ width: 15, height: 15 }} />
                   </div>
                   <div>
-                    <div className="text-[18px] font-semibold text-white">
+                    <div className="text-sm font-semibold mb-0.5" style={{ color: "var(--text)" }}>
                       {reward.title}
                     </div>
-                    <div className="text-xs sm:text-sm text-[#A1A1AA] mt-0.5">
+                    <div className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
                       {reward.desc}
                     </div>
                   </div>
@@ -119,14 +115,18 @@ export default function PrizesSection() {
             })}
           </div>
 
-          <div>
+          {/* CTA footer */}
+          <div
+            className="p-6 sm:p-8 text-center"
+            style={{ borderTop: "1px solid var(--border)" }}
+          >
             <a
               href={REGISTER_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              <span>Claim Your Spot</span>
+              Claim Your Spot
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>

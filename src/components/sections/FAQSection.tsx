@@ -8,7 +8,7 @@ const faqs = [
   {
     question: "Who can participate?",
     answer:
-      "Students currently enrolled in schools (Classes 9-12) or colleges/universities (Undergraduate/Postgraduate) are eligible to participate. Both beginner and experienced coders are welcome!",
+      "Students currently enrolled in schools (Classes 9–12) or colleges/universities (Undergraduate/Postgraduate) are eligible to participate. Both beginner and experienced coders are welcome!",
   },
   {
     question: "Team size?",
@@ -18,7 +18,7 @@ const faqs = [
   {
     question: "Registration fee?",
     answer:
-      "Registration is 100% FREE! There are no hidden fees for submitting ideas or participating in the 24-hour hackathon.",
+      "Registration is 100% FREE. There are no hidden fees for submitting ideas or participating in the 24-hour hackathon.",
   },
   {
     question: "Requirements?",
@@ -28,94 +28,105 @@ const faqs = [
   {
     question: "Certificates?",
     answer:
-      "Yes! All registered participants who submit a valid project will receive official verified certificates of participation from Birla Institute of Applied Sciences and Coding Blocks.",
+      "Yes. All registered participants who submit a valid project will receive official verified certificates of participation from Birla Institute of Applied Sciences and Coding Blocks.",
   },
 ];
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const toggleIndex = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
     <section id="faq" className="section-wrapper">
       <div className="app-container">
-        
+
         {/* Section Header */}
-        <div className="mb-16">
+        <div className="mb-12">
           <motion.div
+            className="badge-pill mb-4"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="badge-pill mb-4"
+            transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            Got Questions?
+            FAQ
           </motion.div>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            className="text-[32px] sm:text-[40px] lg:text-[48px] font-bold tracking-[-0.02em] leading-[1.1]"
+            style={{ color: "var(--text)" }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-[64px] font-bold text-white tracking-[-0.03em] leading-tight"
+            transition={{ duration: 0.45, delay: 0.06, ease: "easeOut" }}
           >
             Frequently Asked.
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base sm:text-[17px] max-w-xl mt-3"
+            style={{ color: "var(--text-muted)", lineHeight: "1.7" }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-[18px] text-[#A1A1AA] max-w-2xl mt-4 leading-relaxed"
+            transition={{ duration: 0.45, delay: 0.12, ease: "easeOut" }}
           >
             Everything you need to know before registering for Hackathon 2026.
           </motion.p>
         </div>
 
-        {/* 5 Distinct Glass Accordion Cards */}
-        <div className="max-w-3xl mx-auto space-y-4">
+        {/* Accordion */}
+        <div className="max-w-2xl space-y-2">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <motion.div
                 key={faq.question}
-                initial={{ opacity: 0, y: 15 }}
+                className="rounded-xl overflow-hidden"
+                style={{ border: "1px solid var(--border)" }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.06 }}
-                className={`card-glass transition-all duration-300 ${
-                  isOpen ? "border-[#8B5CF6]/40 shadow-lg shadow-[#8B5CF6]/5" : ""
-                }`}
+                transition={{ duration: 0.35, delay: index * 0.05, ease: "easeOut" }}
               >
                 <button
                   type="button"
-                  onClick={() => toggleIndex(index)}
-                  className="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="w-full px-5 py-4 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none focus-visible:ring-2 transition-colors duration-150"
+                  style={{
+                    background: isOpen ? "var(--bg-raised)" : "var(--surface)",
+                    color: "var(--text)",
+                  }}
+                  aria-expanded={isOpen}
                 >
-                  <span className="text-xl sm:text-[22px] font-semibold text-white tracking-tight">
+                  <span className="text-sm font-semibold leading-snug">
                     {faq.question}
                   </span>
-                  <div
-                    className={`w-9 h-9 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center text-white flex-shrink-0 transition-transform duration-300 ${
-                      isOpen ? "rotate-180 bg-[#8B5CF6] text-white border-[#8B5CF6]" : ""
-                    }`}
-                  >
-                    <ChevronDown className="w-4 h-4" />
-                  </div>
+                  <ChevronDown
+                    className="flex-shrink-0 transition-transform duration-200"
+                    style={{
+                      width: 16,
+                      height: 16,
+                      color: "var(--text-muted)",
+                      transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                    }}
+                  />
                 </button>
 
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                      initial={{ height: 0 }}
+                      animate={{ height: "auto" }}
+                      exit={{ height: 0 }}
+                      transition={{ duration: 0.22, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 sm:px-7 pb-7 pt-1 border-t border-white/5 text-base sm:text-[18px] text-[#A1A1AA] leading-relaxed">
+                      <div
+                        className="px-5 py-4 text-sm leading-relaxed"
+                        style={{
+                          color: "var(--text-muted)",
+                          borderTop: "1px solid var(--border)",
+                          background: "var(--surface)",
+                        }}
+                      >
                         {faq.answer}
                       </div>
                     </motion.div>

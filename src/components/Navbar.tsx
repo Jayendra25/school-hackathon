@@ -9,61 +9,57 @@ const REGISTER_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSeesu7fm6jiaN94gQX_J79xhD1qCbG2wyG83CsZdKjvsi4EWQ/viewform?usp=publish-editor";
 
 const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Themes", href: "#themes" },
+  { label: "About",    href: "#about" },
+  { label: "Themes",   href: "#themes" },
   { label: "Why Join", href: "#why-participate" },
-  { label: "Prizes", href: "#prizes" },
+  { label: "Prizes",   href: "#prizes" },
   { label: "Timeline", href: "#timeline" },
   { label: "Sponsors", href: "#sponsors" },
-  { label: "FAQ", href: "#faq" },
+  { label: "FAQ",      href: "#faq" },
 ];
 
-/* ── Sun icon ── */
 function SunIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-      strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3">
+      strokeLinecap="round" strokeLinejoin="round" style={{ width: 12, height: 12 }}>
       <circle cx="12" cy="12" r="4" />
-      <line x1="12" y1="2" x2="12" y2="4" />
+      <line x1="12" y1="2"  x2="12" y2="4"  />
       <line x1="12" y1="20" x2="12" y2="22" />
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+      <line x1="4.22" y1="4.22"  x2="5.64"  y2="5.64"  />
       <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-      <line x1="2" y1="12" x2="4" y2="12" />
+      <line x1="2"  y1="12" x2="4"  y2="12" />
       <line x1="20" y1="12" x2="22" y2="12" />
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+      <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36" />
+      <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"  />
     </svg>
   );
 }
 
-/* ── Moon icon ── */
 function MoonIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3">
+    <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 11, height: 11 }}>
       <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
     </svg>
   );
 }
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState("");
-  const [menuOpen, setMenuOpen] = useState(false);
-  const toggleRef = useRef<HTMLButtonElement>(null);
-  const { theme, toggleTheme } = useTheme();
-  const isLight = theme === "light";
+  const [scrolled, setScrolled]   = useState(false);
+  const [active, setActive]       = useState("");
+  const [menuOpen, setMenuOpen]   = useState(false);
+  const toggleRef                 = useRef<HTMLButtonElement>(null);
+  const { theme, toggleTheme }    = useTheme();
+  const isLight                   = theme === "light";
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 30);
-      const sections = navItems.map((item) =>
-        document.querySelector(item.href)
-      );
+      setScrolled(window.scrollY > 20);
+      const sections = navItems.map((item) => document.querySelector(item.href));
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= 250) { setActive(navItems[i].href); break; }
+        if (section && section.getBoundingClientRect().top <= 220) {
+          setActive(navItems[i].href);
+          break;
         }
       }
     };
@@ -75,49 +71,55 @@ export default function Navbar() {
     const btn = toggleRef.current;
     if (btn) {
       const rect = btn.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
-      toggleTheme(x, y);
+      toggleTheme(rect.left + rect.width / 2, rect.top + rect.height / 2);
     }
   };
 
-  const navBg = isLight
-    ? scrolled
-      ? "bg-white/92 backdrop-blur-xl border-black/10 shadow-2xl shadow-black/10"
-      : "bg-zinc-100/85 backdrop-blur-md border-black/08"
-    : scrolled
-      ? "bg-black/85 backdrop-blur-xl border-white/15 shadow-2xl shadow-black/80"
-      : "bg-zinc-950/70 backdrop-blur-md border-white/10";
-
-  const textColor = isLight ? "text-zinc-800" : "text-white";
-  const mutedColor = isLight ? "text-zinc-500" : "text-[#A1A1AA]";
-  const activeColor = isLight ? "text-zinc-900 bg-zinc-200" : "text-white bg-white/10";
-  const hoverColor = isLight ? "hover:text-zinc-900 hover:bg-zinc-200/70" : "hover:text-white hover:bg-white/5";
+  const navBg = scrolled
+    ? "var(--nav-bg-scrolled)"
+    : "var(--nav-bg)";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-4 pointer-events-none transition-all duration-300">
-      <motion.nav
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`pointer-events-auto flex items-center justify-between gap-4 px-5 py-2.5 rounded-full transition-all duration-300 border ${navBg} max-w-[1280px] w-full`}
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-3 pointer-events-none">
+      <nav
+        className="pointer-events-auto flex items-center justify-between gap-4 px-4 py-2 rounded-xl w-full max-w-[1120px] transition-all duration-200"
+        style={{
+          background: navBg,
+          border: "1px solid var(--nav-border)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+          boxShadow: scrolled ? "var(--shadow-md)" : "none",
+        }}
       >
         {/* Brand */}
         <a
           href="#"
-          className="flex items-center gap-3 group shrink-0"
+          className="flex items-center gap-2.5 shrink-0"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
         >
-          <div className="w-8 h-8 rounded-full overflow-hidden border border-white/20 group-hover:border-[#8B5CF6] transition-colors duration-200 bg-white flex items-center justify-center">
-            <Image src="/birla-logo.png" alt="BIAS Logo" width={32} height={32} className="object-contain w-full h-full" />
+          <div
+            className="w-7 h-7 rounded-full overflow-hidden bg-white flex-shrink-0"
+            style={{ border: "1px solid var(--border-strong)" }}
+          >
+            <Image src="/birla-logo.png" alt="BIAS" width={28} height={28} className="object-contain w-full h-full" />
           </div>
           <div className="flex items-baseline gap-1">
-            <span className={`text-sm font-bold tracking-tight ${textColor}`}>HACKATHON</span>
-            <span className="text-xs font-mono font-semibold text-[#8B5CF6]">2026</span>
+            <span
+              className="text-[13px] font-semibold tracking-tight"
+              style={{ color: "var(--text)" }}
+            >
+              Hackathon
+            </span>
+            <span
+              className="text-[11px] font-mono font-semibold"
+              style={{ color: "var(--accent)" }}
+            >
+              2026
+            </span>
           </div>
         </a>
 
-        {/* Center Nav Items */}
+        {/* Center Nav */}
         <div className="hidden md:flex items-center gap-0.5">
           {navItems.map((item) => {
             const isAct = active === item.href;
@@ -125,15 +127,19 @@ export default function Navbar() {
               <a
                 key={item.href}
                 href={item.href}
-                className={`relative px-3.5 py-1.5 text-[13px] font-medium transition-all duration-200 rounded-full ${isAct ? activeColor : `${mutedColor} ${hoverColor}`
-                  }`}
+                className="relative px-3 py-1.5 text-[13px] font-medium rounded-lg transition-colors duration-150"
+                style={{
+                  color: isAct ? "var(--text)" : "var(--text-muted)",
+                  background: isAct ? "var(--bg-raised)" : "transparent",
+                }}
               >
                 {item.label}
                 {isAct && (
                   <motion.span
-                    layoutId="nav-active-pill"
-                    className="absolute inset-0 rounded-full z-[-1]"
-                    transition={{ type: "spring", stiffness: 380, damping: 35 }}
+                    layoutId="nav-active"
+                    className="absolute inset-0 rounded-lg"
+                    style={{ background: "var(--bg-raised)", zIndex: -1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 40 }}
                   />
                 )}
               </a>
@@ -141,103 +147,130 @@ export default function Navbar() {
           })}
         </div>
 
-        {/* Right: Theme Toggle + Register */}
-        <div className="flex items-center gap-3 shrink-0">
+        {/* Right: Theme toggle + Register */}
+        <div className="flex items-center gap-2.5 shrink-0">
 
-          {/* ── Theme Toggle ── */}
+          {/* Theme Toggle */}
           <button
             ref={toggleRef}
             onClick={handleToggle}
-            aria-label="Toggle theme"
-            className={`relative flex items-center w-14 h-7 rounded-full border transition-all duration-300 cursor-pointer overflow-hidden ${isLight
-              ? "bg-amber-50 border-amber-200 shadow-inner shadow-amber-100"
-              : "bg-zinc-900 border-white/15"
-              }`}
+            aria-label={isLight ? "Switch to dark mode" : "Switch to light mode"}
+            className="relative flex items-center rounded-full transition-colors duration-200 cursor-pointer"
+            style={{
+              width: 52,
+              height: 26,
+              background: isLight ? "#fef3c7" : "var(--bg-raised)",
+              border: "1px solid var(--border-strong)",
+              padding: "2px",
+            }}
           >
-            {/* Track icons */}
-            <span className={`absolute left-1.5 text-amber-500 transition-all duration-300 ${isLight ? "opacity-0 scale-50" : "opacity-60 scale-100"}`}>
+            <span
+              className="absolute transition-all duration-300"
+              style={{
+                left: 7,
+                color: "var(--text-muted)",
+                opacity: isLight ? 0 : 0.6,
+              }}
+            >
               <MoonIcon />
             </span>
-            <span className={`absolute right-1.5 text-amber-500 transition-all duration-300 ${isLight ? "opacity-80 scale-100" : "opacity-0 scale-50"}`}>
+            <span
+              className="absolute transition-all duration-300"
+              style={{
+                right: 7,
+                color: "#d97706",
+                opacity: isLight ? 1 : 0,
+              }}
+            >
               <SunIcon />
             </span>
-
-            {/* Sliding thumb */}
             <motion.span
-              className={`absolute w-5 h-5 rounded-full shadow-md flex items-center justify-center text-[10px] ${isLight ? "bg-amber-400 text-white" : "bg-white text-zinc-900"
-                }`}
-              animate={{ x: isLight ? 30 : 2 }}
-              transition={{ type: "spring", stiffness: 500, damping: 35 }}
+              className="rounded-full shadow-sm flex items-center justify-center"
+              animate={{ x: isLight ? 26 : 0 }}
+              transition={{ type: "spring", stiffness: 500, damping: 38 }}
+              style={{
+                width: 20,
+                height: 20,
+                background: isLight ? "#f59e0b" : "var(--text)",
+                color: isLight ? "#fff" : "var(--bg)",
+              }}
             >
               {isLight ? <SunIcon /> : <MoonIcon />}
             </motion.span>
           </button>
 
           {/* Register CTA */}
-          <motion.a
+          <a
             href={REGISTER_URL}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            className={`hidden sm:inline-flex px-4 py-1.5 text-[13px] font-semibold rounded-full transition-all duration-200 shadow-sm ${isLight
-              ? "bg-zinc-900 text-white hover:bg-[#8B5CF6]"
-              : "bg-white text-black hover:bg-[#8B5CF6] hover:text-white"
-              }`}
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-[13px] font-semibold rounded-lg transition-opacity duration-150 hover:opacity-85"
+            style={{
+              background: "var(--text)",
+              color: "var(--bg)",
+            }}
           >
-            Register Now
-          </motion.a>
+            Register
+          </a>
 
-          {/* Mobile hamburger */}
+          {/* Mobile menu button */}
           <button
-            className={`md:hidden flex flex-col gap-1 p-1.5 ${mutedColor}`}
+            className="md:hidden p-1.5 rounded-lg transition-colors duration-150"
+            style={{ color: "var(--text-muted)" }}
             onClick={() => setMenuOpen((v) => !v)}
-            aria-label="Open menu"
+            aria-label="Toggle menu"
           >
-            <motion.span animate={menuOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }} className={`block w-5 h-0.5 rounded-full ${isLight ? "bg-zinc-700" : "bg-white"} transition-colors`} />
-            <motion.span animate={menuOpen ? { opacity: 0 } : { opacity: 1 }} className={`block w-5 h-0.5 rounded-full ${isLight ? "bg-zinc-700" : "bg-white"} transition-colors`} />
-            <motion.span animate={menuOpen ? { rotate: -45, y: -5 } : { rotate: 0, y: 0 }} className={`block w-5 h-0.5 rounded-full ${isLight ? "bg-zinc-700" : "bg-white"} transition-colors`} />
+            <svg viewBox="0 0 20 20" fill="currentColor" style={{ width: 18, height: 18 }}>
+              {menuOpen ? (
+                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+              ) : (
+                <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+              )}
+            </svg>
           </button>
         </div>
-      </motion.nav>
+      </nav>
 
-      {/* Mobile Dropdown Menu */}
+      {/* Mobile Dropdown */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.97 }}
-            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className={`pointer-events-auto absolute top-20 left-4 right-4 rounded-2xl border p-4 flex flex-col gap-1 ${isLight
-              ? "bg-white/95 border-black/08 shadow-xl"
-              : "bg-zinc-950/95 border-white/10 shadow-2xl shadow-black"
-              } backdrop-blur-xl`}
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="pointer-events-auto absolute top-[56px] left-4 right-4 rounded-xl p-2 flex flex-col gap-0.5"
+            style={{
+              background: "var(--nav-bg-scrolled)",
+              border: "1px solid var(--nav-border)",
+              backdropFilter: "blur(16px)",
+              boxShadow: "var(--shadow-md)",
+            }}
           >
-            {navItems.map((item, i) => (
-              <motion.a
+            {navItems.map((item) => (
+              <a
                 key={item.href}
                 href={item.href}
-                initial={{ opacity: 0, x: -12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.04 }}
                 onClick={() => setMenuOpen(false)}
-                className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${isLight
-                  ? "text-zinc-700 hover:text-zinc-900 hover:bg-zinc-100"
-                  : "text-[#A1A1AA] hover:text-white hover:bg-white/5"
-                  }`}
+                className="px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150"
+                style={{ color: "var(--text-muted)" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--text)"; (e.currentTarget as HTMLElement).style.background = "var(--bg-raised)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--text-muted)"; (e.currentTarget as HTMLElement).style.background = "transparent"; }}
               >
                 {item.label}
-              </motion.a>
+              </a>
             ))}
-            <a
-              href={REGISTER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 w-full text-center px-4 py-2.5 text-sm font-semibold rounded-full bg-[#8B5CF6] text-white"
-            >
-              Register Now
-            </a>
+            <div className="pt-1.5 mt-1" style={{ borderTop: "1px solid var(--border)" }}>
+              <a
+                href={REGISTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center px-3.5 py-2.5 rounded-lg text-sm font-semibold"
+                style={{ background: "var(--text)", color: "var(--bg)" }}
+              >
+                Register Now
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
