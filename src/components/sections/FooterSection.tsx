@@ -40,7 +40,8 @@ export default function FooterSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.08, ease: "easeOut" }}
         >
-          &copy; {new Date().getFullYear()} TechSpark School Innovation Hackathon.
+          &copy; {new Date().getFullYear()} TechSpark School Innovation Hackathon.<br />
+          Birla Institute of Applied Sciences, powered by Coding Blocks.
         </motion.p>
 
       </div>
