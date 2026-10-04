@@ -1,36 +1,36 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, Users, Layers, Trophy } from "lucide-react";
+import { Clock, Users, Layers, Lightbulb } from "lucide-react";
 
 const stats = [
   {
     icon: Clock,
-    value: "24",
-    unit: "Hours",
-    title: "Non-Stop Sprint",
-    desc: "An intense 24-hour cycle of collaborative building, mentoring, and shipping.",
+    value: "7",
+    unit: "Days",
+    title: "Build Period",
+    desc: "One full week to ideate, design, build and polish a working prototype from scratch.",
   },
   {
     icon: Users,
-    value: "300+",
-    unit: "Participants",
-    title: "School & College",
-    desc: "Talented students and developers coming together across educational institutions.",
+    value: "1–5",
+    unit: "Members",
+    title: "Team Size",
+    desc: "Solo or squad — form a team of up to 5 school students and build together.",
   },
   {
     icon: Layers,
-    value: "6",
+    value: "3",
     unit: "Tracks",
-    title: "Specialized Domains",
-    desc: "Diverse problem tracks spanning Artificial Intelligence to Open Innovation.",
+    title: "Choose Your Domain",
+    desc: "Web Development, Android App Development, or AI & Innovation — pick what excites you.",
   },
   {
-    icon: Trophy,
-    value: "₹25,000",
-    unit: "Prize Pool",
-    title: "Rewards & Swag",
-    desc: "Cash prizes, official BIAS certificates, and exclusive Coding Blocks goodies.",
+    icon: Lightbulb,
+    value: "7–10",
+    unit: "Min Demo",
+    title: "Final Showcase",
+    desc: "Present your problem, solution, tech stack and live demo to the judging panel.",
   },
 ];
 
@@ -48,7 +48,7 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            About The Event
+            About TechSpark
           </motion.div>
           <motion.h2
             className="text-[32px] sm:text-[40px] lg:text-[48px] font-bold tracking-[-0.02em] leading-[1.1]"
@@ -58,7 +58,7 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.06, ease: "easeOut" }}
           >
-            Engineered for Innovators.
+            Creators, Not Just Users.
           </motion.h2>
           <motion.p
             className="text-base sm:text-[17px] max-w-2xl mt-3"
@@ -68,8 +68,9 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.12, ease: "easeOut" }}
           >
-            Organized by Birla Institute of Applied Sciences in collaboration with Coding Blocks
-            to foster technical excellence and creative problem solving.
+            TechSpark is designed to make school students <strong style={{ color: "var(--text-secondary)" }}>creators of technology, not just users of it.</strong>{" "}
+            Students identify a real problem, choose a track, build a prototype in one week and present it to a judging panel.
+            It&apos;s always about looking for a problem and building a solution for it.
           </motion.p>
         </div>
 
@@ -87,7 +88,7 @@ export default function AboutSection() {
                 transition={{ duration: 0.4, delay: index * 0.07, ease: "easeOut" }}
               >
                 <div className="icon-box mb-5">
-                  <Icon className="w-4.5 h-4.5" style={{ width: 18, height: 18 }} />
+                  <Icon style={{ width: 18, height: 18 }} />
                 </div>
 
                 <div

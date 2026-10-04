@@ -5,9 +5,8 @@ import { motion } from "framer-motion";
 export default function FooterSection() {
   return (
     <footer
-      className="py-16"
+      className="py-14"
       style={{
-        backgroundColor: "var(--bg)",
         borderTop: "1px solid var(--border)",
         color: "var(--text)",
       }}
@@ -21,12 +20,14 @@ export default function FooterSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
-          <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>
-            Birla Institute of Applied Sciences
+          <p className="text-base font-black tracking-tight" style={{ color: "var(--text)" }}>
+            Tech<span style={{ color: "var(--accent)" }}>Spark</span>
+          </p>
+          <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
+            School Innovation Hackathon &bull; 2026 Edition
           </p>
           <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-            Organized in collaboration with{" "}
-            <span style={{ color: "var(--text-secondary)" }}>Coding Blocks</span>
+            Think it. Build it. Bring it to life.
           </p>
         </motion.div>
 
@@ -39,7 +40,7 @@ export default function FooterSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.08, ease: "easeOut" }}
         >
-          &copy; {new Date().getFullYear()} Hackathon 2026. All rights reserved.
+          &copy; {new Date().getFullYear()} TechSpark School Innovation Hackathon.
         </motion.p>
 
       </div>
