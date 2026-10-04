@@ -218,14 +218,23 @@ export default function Navbar() {
           {/* Register CTA */}
           <a
             href={REGISTER_URL}
-            
-            
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-[13px] font-semibold rounded-lg transition-opacity duration-150 hover:opacity-85"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-[13px] font-semibold rounded-lg transition-opacity duration-150 hover:opacity-85 relative"
             style={{
               background: "var(--text)",
               color: "var(--bg)",
             }}
           >
+            {/* Live pulse dot */}
+            <span className="relative flex h-2 w-2">
+              <span
+                className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                style={{ background: "#22c55e" }}
+              />
+              <span
+                className="relative inline-flex rounded-full h-2 w-2"
+                style={{ background: "#22c55e" }}
+              />
+            </span>
             Register
           </a>
 
@@ -279,11 +288,19 @@ export default function Navbar() {
             <div className="pt-1.5 mt-1" style={{ borderTop: "1px solid var(--border)" }}>
               <a
                 href={REGISTER_URL}
-                
-                
-                className="block w-full text-center px-3.5 py-2.5 rounded-lg text-sm font-semibold"
+                className="flex items-center justify-center gap-2 w-full px-3.5 py-2.5 rounded-lg text-sm font-semibold"
                 style={{ background: "var(--text)", color: "var(--bg)" }}
               >
+                <span className="relative flex h-2 w-2">
+                  <span
+                    className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                    style={{ background: "#22c55e" }}
+                  />
+                  <span
+                    className="relative inline-flex rounded-full h-2 w-2"
+                    style={{ background: "#22c55e" }}
+                  />
+                </span>
                 Register Now
               </a>
             </div>

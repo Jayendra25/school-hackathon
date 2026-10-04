@@ -9,7 +9,7 @@ const stats = [
     value: "7",
     unit: "Days",
     title: "Build Period",
-    desc: "One full week to ideate, design, build and polish a working prototype from scratch.",
+    desc: "Work from home or school for 7 days, then come to the Birla campus on Day 8 for the live showcase and judging.",
   },
   {
     icon: Users,
