@@ -47,7 +47,7 @@ function ContactCard({
   return (
     <motion.div
       key={person.name}
-      className="card-glass p-7 flex flex-col gap-5"
+      className="card-glass p-5 flex flex-col gap-4"
       style={{
         borderColor: person.colorBorder,
         boxShadow: `0 0 28px ${person.colorDim}, inset 0 1px 0 ${person.colorDim}`,
@@ -93,17 +93,25 @@ function ContactCard({
       </div>
 
       {/* Action buttons */}
-      <div className="flex gap-3">
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: person.whatsapp ? "1fr 1fr" : "1fr",
+          gap: "12px",
+        }}
+      >
         <a
           href={`tel:+91${person.phone}`}
-          className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-opacity duration-150 hover:opacity-80"
+          className="flex items-center justify-center gap-2 rounded-xl text-sm font-semibold transition-opacity duration-150 hover:opacity-80"
           style={{
             background: person.colorDim,
             border: `1px solid ${person.colorBorder}`,
             color: person.color,
+            padding: "10px 12px",
+            whiteSpace: "nowrap",
           }}
         >
-          <Phone style={{ width: 14, height: 14 }} />
+          <Phone style={{ width: 14, height: 14, flexShrink: 0 }} />
           Call
         </a>
         {person.whatsapp && (
@@ -111,14 +119,16 @@ function ContactCard({
             href={`https://wa.me/91${person.phone}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-opacity duration-150 hover:opacity-80"
+            className="flex items-center justify-center gap-2 rounded-xl text-sm font-semibold transition-opacity duration-150 hover:opacity-80"
             style={{
               background: person.colorDim,
               border: `1px solid ${person.colorBorder}`,
               color: person.color,
+              padding: "10px 12px",
+              whiteSpace: "nowrap",
             }}
           >
-            <MessageCircle style={{ width: 14, height: 14 }} />
+            <MessageCircle style={{ width: 14, height: 14, flexShrink: 0 }} />
             WhatsApp
           </a>
         )}

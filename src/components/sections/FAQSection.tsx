@@ -38,12 +38,12 @@ const faqs = [
   {
     question: "How is the judging done?",
     answer:
-      "Overall rankings are based on combined scores from all three Day 8 events — Hackathon Showcase, Tech Quiz, and Treasure Hunt. For the Hackathon, judges evaluate teams on: Idea & Creativity, Problem Relevance, Working Prototype, Technical Understanding, Live Modification and Presentation. Tech Quiz and Treasure Hunt scores are added on top to determine the final standings.",
+      "Overall rankings are based on combined scores from all three Day 8 events — Hackathon Showcase, Quiz, and Treasure Hunt. For the Hackathon, judges evaluate teams on: Idea & Creativity, Problem Relevance, Working Prototype, Technical Understanding, Live Modification and Presentation. Quiz and Treasure Hunt scores are added on top to determine the final standings.",
   },
   {
     question: "What do winners receive?",
     answer:
-      "Overall winners (Hackathon Champion, 1st & 2nd Runner-Up) are determined by combined scores from the Hackathon, Tech Quiz and Treasure Hunt. There are also track awards (Best Web Project, Best Android App, Best AI Innovation) and special awards (Most Innovative Idea, Best Social Impact, Best Presentation) — these are judged purely on hackathon performance. All finalists receive Participation Certificates.",
+      "Overall winners (Hackathon Champion, 1st & 2nd Runner-Up) are determined by combined scores from the Hackathon, Quiz and Treasure Hunt. There are also track awards (Best Web Project, Best Android App, Best AI Innovation) and special awards (Most Innovative Idea, Best Social Impact, Best Presentation) — these are judged purely on hackathon performance. All finalists receive Participation Certificates.",
   },
 ];
 
