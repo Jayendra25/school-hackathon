@@ -11,6 +11,7 @@ const Navbar               = dynamic(() => import("@/components/Navbar"),       
 const HeroSection          = dynamic(() => import("@/components/sections/HeroSection"),               { ssr: false });
 const AboutSection         = dynamic(() => import("@/components/sections/AboutSection"),              { ssr: false });
 const ThemesSection        = dynamic(() => import("@/components/sections/ThemesSection"),             { ssr: false });
+const Day8EventsSection    = dynamic(() => import("@/components/sections/Day8EventsSection"),          { ssr: false });
 const WhyParticipateSection= dynamic(() => import("@/components/sections/WhyParticipateSection"),     { ssr: false });
 const PrizesSection        = dynamic(() => import("@/components/sections/PrizesSection"),             { ssr: false });
 const ScheduleSection      = dynamic(() => import("@/components/sections/ScheduleSection"),           { ssr: false });
@@ -43,6 +44,7 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <ThemesSection />
+        <Day8EventsSection />
         <WhyParticipateSection />
         <PrizesSection />
         <ScheduleSection />
