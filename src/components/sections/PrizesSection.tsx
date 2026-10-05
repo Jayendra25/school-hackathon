@@ -8,7 +8,7 @@ const mainAwards = [
     icon: Trophy,
     rank: "🥇 Champion",
     title: "Hackathon Champion",
-    who: "Best overall team across all tracks",
+    who: "Highest combined score across Hackathon + Tech Quiz + Treasure Hunt",
     recognition: "Winner Trophy + Winner Certificates + Prize",
     border: "rgba(246,211,101,0.45)",
     glow: "rgba(246,211,101,0.13)",
@@ -21,7 +21,7 @@ const mainAwards = [
     icon: Medal,
     rank: "🥈 Runner-Up",
     title: "1st Runner-Up",
-    who: "Second-highest overall team",
+    who: "Second-highest combined score across all three events",
     recognition: "Runner-Up Trophy + Certificates + Prize",
     border: "rgba(192,200,215,0.45)",
     glow: "rgba(192,200,215,0.10)",
@@ -34,7 +34,7 @@ const mainAwards = [
     icon: Medal,
     rank: "🥉 Runner-Up",
     title: "2nd Runner-Up",
-    who: "Third-highest overall team",
+    who: "Third-highest combined score across all three events",
     recognition: "Runner-Up Trophy + Certificates + Prize",
     border: "rgba(205,127,50,0.45)",
     glow: "rgba(205,127,50,0.10)",
@@ -94,6 +94,25 @@ export default function PrizesSection() {
             Overall winners, track champions and special category awards — multiple ways to be recognised.
           </motion.p>
         </div>
+
+        {/* Combined scoring note */}
+        <motion.div
+          className="card-glass p-4 mb-6 flex items-start gap-3"
+          style={{ borderColor: "rgba(246,211,101,0.25)" }}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        >
+          <Trophy style={{ width: 16, height: 16, color: "#f6d365", flexShrink: 0, marginTop: 2 }} />
+          <p className="text-sm" style={{ color: "var(--text-muted)", lineHeight: "1.7" }}>
+            <span className="font-semibold" style={{ color: "var(--text)" }}>Overall rankings are based on combined scores</span>
+            {" "}— your team's final position is calculated from the total score across all three Day 8 events:{" "}
+            <span style={{ color: "var(--text)" }}>Hackathon Showcase</span>,{" "}
+            <span style={{ color: "var(--text)" }}>Tech Quiz</span>, and{" "}
+            <span style={{ color: "var(--text)" }}>Treasure Hunt</span>.
+          </p>
+        </motion.div>
 
         {/* Overall Awards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">

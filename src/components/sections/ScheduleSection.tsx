@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Megaphone, ClipboardList, BookOpen, UserCheck, Clock, Code2, Presentation, Trophy } from "lucide-react";
+import { Megaphone, ClipboardList, BookOpen, UserCheck, Clock, Code2, Presentation, Trophy, Map, Brain } from "lucide-react";
 
 const steps = [
   {
@@ -48,9 +48,21 @@ const steps = [
   },
   {
     step: "08",
+    phase: "Day 8 — Treasure Hunt",
+    icon: Map,
+    desc: "A campus-wide team treasure hunt with tech-themed clues hidden across the college. Solve puzzles, decode hints, and race to the finish — a fun warm-up before the main judging begins.",
+  },
+  {
+    step: "09",
+    phase: "Day 8 — Tech Quiz",
+    icon: Brain,
+    desc: "A fast-paced buzzer-round tech quiz open to all participants. Questions span programming fundamentals, general tech knowledge, and current trends in AI, web, and mobile. Top scorers win special prizes.",
+  },
+  {
+    step: "10",
     phase: "Results & Awards",
     icon: Trophy,
-    desc: "Winners announced on campus. Trophies, prizes and certificates distributed. Special category awards presented.",
+    desc: "Overall winners are decided on combined scores from all three events — Hackathon, Tech Quiz and Treasure Hunt. Trophies, prizes and certificates distributed on stage.",
   },
 ];
 
