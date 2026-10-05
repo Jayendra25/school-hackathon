@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Clock, Users, Layers, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { useRef } from "react";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { useTheme } from "@/components/ThemeProvider";
 
 const DynamicGradient = dynamic(() => import("@/components/DynamicGradient"), { ssr: false });
 
@@ -25,6 +27,117 @@ const checklist = [
   "Team leader's WhatsApp number",
 ];
 
+function SunIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+      strokeLinecap="round" strokeLinejoin="round" style={{ width: 12, height: 12 }}>
+      <circle cx="12" cy="12" r="4" />
+      <line x1="12" y1="2" x2="12" y2="4" />
+      <line x1="12" y1="20" x2="12" y2="22" />
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+      <line x1="2" y1="12" x2="4" y2="12" />
+      <line x1="20" y1="12" x2="22" y2="12" />
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+    </svg>
+  );
+}
+
+function MoonIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 11, height: 11 }}>
+      <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
+    </svg>
+  );
+}
+
+function TopBar() {
+  const { theme, toggleTheme } = useTheme();
+  const isLight = theme === "light";
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  const handleToggle = () => {
+    const btn = toggleRef.current;
+    if (btn) {
+      const rect = btn.getBoundingClientRect();
+      toggleTheme(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    }
+  };
+
+  return (
+    <div
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3"
+      style={{
+        background: "var(--nav-bg-scrolled)",
+        borderBottom: "1px solid var(--border)",
+        backdropFilter: "blur(16px)",
+        WebkitBackdropFilter: "blur(16px)",
+      }}
+    >
+      <Link
+        href="/"
+        className="inline-flex items-center gap-2 text-sm font-medium transition-opacity hover:opacity-70"
+        style={{ color: "var(--text-muted)" }}
+      >
+        <ArrowLeft style={{ width: 15, height: 15 }} />
+        Back to site
+      </Link>
+
+      <span className="text-sm font-black tracking-tight flex items-center gap-1" style={{ color: "var(--text)" }}>
+        Tech<span className="text-gradient-royal">Spark</span>
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 13, height: 13, flexShrink: 0 }} aria-hidden="true">
+          <defs>
+            <linearGradient id="sparkGradRegNav" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#8b5cf6" />
+              <stop offset="40%" stopColor="#c084fc" />
+              <stop offset="100%" stopColor="#f6d365" />
+            </linearGradient>
+          </defs>
+          <path d="M20 2 L22.5 17.5 L38 20 L22.5 22.5 L20 38 L17.5 22.5 L2 20 L17.5 17.5 Z" fill="url(#sparkGradRegNav)" />
+          <path d="M32 4 L33 9 L38 10 L33 11 L32 16 L31 11 L26 10 L31 9 Z" fill="url(#sparkGradRegNav)" opacity="0.85" />
+          <path d="M8 26 L9 30 L13 31 L9 32 L8 36 L7 32 L3 31 L7 30 Z" fill="url(#sparkGradRegNav)" opacity="0.7" />
+        </svg>
+      </span>
+
+      {/* Theme Toggle */}
+      <button
+        ref={toggleRef}
+        onClick={handleToggle}
+        aria-label={isLight ? "Switch to dark mode" : "Switch to light mode"}
+        className="relative flex items-center rounded-full transition-colors duration-200 cursor-pointer"
+        style={{
+          width: 52,
+          height: 26,
+          background: isLight ? "#fef3c7" : "var(--bg-raised)",
+          border: "1px solid var(--border-strong)",
+          padding: "2px",
+        }}
+      >
+        <span className="absolute transition-all duration-300" style={{ left: 7, color: "var(--text-muted)", opacity: isLight ? 0 : 0.6 }}>
+          <MoonIcon />
+        </span>
+        <span className="absolute transition-all duration-300" style={{ right: 7, color: "#d97706", opacity: isLight ? 1 : 0 }}>
+          <SunIcon />
+        </span>
+        <motion.span
+          className="rounded-full shadow-sm flex items-center justify-center"
+          animate={{ x: isLight ? 26 : 0 }}
+          transition={{ type: "spring", stiffness: 500, damping: 38 }}
+          style={{
+            width: 20,
+            height: 20,
+            background: isLight ? "#f59e0b" : "var(--text)",
+            color: isLight ? "#fff" : "var(--bg)",
+          }}
+        >
+          {isLight ? <SunIcon /> : <MoonIcon />}
+        </motion.span>
+      </button>
+    </div>
+  );
+}
+
 export default function RegisterPage() {
   return (
     <ThemeProvider>
@@ -34,31 +147,7 @@ export default function RegisterPage() {
         style={{ backgroundColor: "transparent", color: "var(--text)", zIndex: 1 }}
       >
       {/* Top bar */}
-      <div
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3"
-        style={{
-          background: "var(--nav-bg-scrolled)",
-          borderBottom: "1px solid var(--border)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-        }}
-      >
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm font-medium transition-opacity hover:opacity-70"
-          style={{ color: "var(--text-muted)" }}
-        >
-          <ArrowLeft style={{ width: 15, height: 15 }} />
-          Back to site
-        </Link>
-
-        <span className="text-sm font-black tracking-tight" style={{ color: "var(--text)" }}>
-          Tech<span className="text-gradient-royal">Spark</span>
-          <span className="text-gradient-gold font-mono text-xs ml-1">2026</span>
-        </span>
-
-        <div className="w-[120px]" />
-      </div>
+      <TopBar />
 
       {/* Page content */}
       <div className="pt-24 pb-20 px-4">
@@ -72,11 +161,25 @@ export default function RegisterPage() {
             transition={{ duration: 0.45, ease: "easeOut" }}
           >
             <h1
-              className="text-[38px] sm:text-[52px] font-black tracking-[-0.025em] leading-[1.05] mb-3"
+              className="text-[38px] sm:text-[52px] font-black tracking-[-0.025em] leading-[1.05] mb-3 flex items-center flex-wrap gap-3"
               style={{ color: "var(--text)" }}
             >
               Register for{" "}
-              <span className="text-gradient-royal">TechSpark</span>
+              <span className="inline-flex items-center gap-2">
+                <span className="text-gradient-royal">TechSpark</span>
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "0.7em", height: "0.7em", flexShrink: 0 }} aria-hidden="true">
+                  <defs>
+                    <linearGradient id="sparkGradRegH1" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#8b5cf6" />
+                      <stop offset="40%" stopColor="#c084fc" />
+                      <stop offset="100%" stopColor="#f6d365" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M20 2 L22.5 17.5 L38 20 L22.5 22.5 L20 38 L17.5 22.5 L2 20 L17.5 17.5 Z" fill="url(#sparkGradRegH1)" />
+                  <path d="M32 4 L33 9 L38 10 L33 11 L32 16 L31 11 L26 10 L31 9 Z" fill="url(#sparkGradRegH1)" opacity="0.85" />
+                  <path d="M8 26 L9 30 L13 31 L9 32 L8 36 L7 32 L3 31 L7 30 Z" fill="url(#sparkGradRegH1)" opacity="0.7" />
+                </svg>
+              </span>
             </h1>
             <p className="text-sm sm:text-base" style={{ color: "var(--text-muted)", lineHeight: "1.7" }}>
               One registration per team. The team leader fills the form on behalf of everyone.
