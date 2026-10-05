@@ -22,13 +22,13 @@ const events = [
   {
     icon: Brain,
     tag: "Day 8 — Event 02",
-    title: "Tech Quiz",
+    title: "General Awareness Quiz",
     description:
-      "A fast-paced buzzer-round tech quiz open to all participants. Questions span programming fundamentals, general tech knowledge, and current trends in AI, web, and mobile.",
+      "A fun and engaging quiz open to all participants, covering general awareness, regional knowledge and basic geography — with a special focus on Uttarakhand. Test your knowledge beyond tech and earn points for your team.",
     highlights: [
-      "Programming fundamentals",
-      "AI, web & mobile trends",
-      "Buzzer-round format",
+      "General awareness questions",
+      "Regional & geography quiz",
+      "Uttarakhand special round",
       "Scores count toward overall ranking",
     ],
     color: "#c084fc",
@@ -156,7 +156,7 @@ export default function Day8EventsSection() {
           transition={{ duration: 0.4, delay: 0.25, ease: "easeOut" }}
         >
           Overall winners are ranked on the{" "}
-          <span style={{ color: "var(--text)" }}>combined score</span> from Hackathon + Tech Quiz + Treasure Hunt.
+          <span style={{ color: "var(--text)" }}>combined score</span> from Hackathon + Quiz + Treasure Hunt.
         </motion.p>
 
       </div>

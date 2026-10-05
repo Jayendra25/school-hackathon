@@ -8,7 +8,7 @@ const mainAwards = [
     icon: Trophy,
     rank: "🥇 Champion",
     title: "Hackathon Champion",
-    who: "Highest combined score across Hackathon + Tech Quiz + Treasure Hunt",
+    who: "Highest combined score across Hackathon + Quiz + Treasure Hunt",
     recognition: "Winner Trophy + Winner Certificates + Prize",
     border: "rgba(246,211,101,0.45)",
     glow: "rgba(246,211,101,0.13)",
@@ -109,7 +109,7 @@ export default function PrizesSection() {
             <span className="font-semibold" style={{ color: "var(--text)" }}>Overall rankings are based on combined scores</span>
             {" "}— your team's final position is calculated from the total score across all three Day 8 events:{" "}
             <span style={{ color: "var(--text)" }}>Hackathon Showcase</span>,{" "}
-            <span style={{ color: "var(--text)" }}>Tech Quiz</span>, and{" "}
+            <span style={{ color: "var(--text)" }}>Quiz</span>, and{" "}
             <span style={{ color: "var(--text)" }}>Treasure Hunt</span>.
           </p>
         </motion.div>

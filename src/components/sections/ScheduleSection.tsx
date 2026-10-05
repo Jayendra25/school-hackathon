@@ -54,15 +54,15 @@ const steps = [
   },
   {
     step: "09",
-    phase: "Day 8 — Tech Quiz",
+    phase: "Day 8 — General Awareness Quiz",
     icon: Brain,
-    desc: "A fast-paced buzzer-round tech quiz open to all participants. Questions span programming fundamentals, general tech knowledge, and current trends in AI, web, and mobile. Top scorers win special prizes.",
+    desc: "A general awareness quiz covering regional knowledge, basic geography and Uttarakhand-focused questions. Open to all participants — top scorers earn special prizes and contribute to their team's overall score.",
   },
   {
     step: "10",
     phase: "Results & Awards",
     icon: Trophy,
-    desc: "Overall winners are decided on combined scores from all three events — Hackathon, Tech Quiz and Treasure Hunt. Trophies, prizes and certificates distributed on stage.",
+    desc: "Overall winners are decided on combined scores from all three events — Hackathon, Quiz and Treasure Hunt. Trophies, prizes and certificates distributed on stage.",
   },
 ];
 
