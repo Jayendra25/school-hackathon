@@ -29,13 +29,45 @@ export default function HeroSection() {
 
         {/* Main Heading */}
         <motion.h1
-          className="text-[64px] sm:text-[80px] lg:text-[100px] font-black tracking-[-0.03em] leading-[0.95] mb-4"
+          className="text-[64px] sm:text-[80px] lg:text-[100px] font-black tracking-[-0.03em] leading-[0.95] mb-4 flex items-center justify-center gap-3"
           style={{ color: "var(--text)" }}
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.08, ease: "easeOut" }}
         >
           Tech<span className="text-gradient-royal">Spark</span>
+          <svg
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ width: "0.75em", height: "0.75em", display: "inline-block", flexShrink: 0 }}
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="sparkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%"   stopColor="#8b5cf6" />
+                <stop offset="40%"  stopColor="#c084fc" />
+                <stop offset="100%" stopColor="#f6d365" />
+              </linearGradient>
+            </defs>
+            {/* Centre star */}
+            <path
+              d="M20 2 L22.5 17.5 L38 20 L22.5 22.5 L20 38 L17.5 22.5 L2 20 L17.5 17.5 Z"
+              fill="url(#sparkGrad)"
+            />
+            {/* Top-right small star */}
+            <path
+              d="M32 4 L33 9 L38 10 L33 11 L32 16 L31 11 L26 10 L31 9 Z"
+              fill="url(#sparkGrad)"
+              opacity="0.85"
+            />
+            {/* Bottom-left small star */}
+            <path
+              d="M8 26 L9 30 L13 31 L9 32 L8 36 L7 32 L3 31 L7 30 Z"
+              fill="url(#sparkGrad)"
+              opacity="0.7"
+            />
+          </svg>
         </motion.h1>
 
         {/* Tagline */}
