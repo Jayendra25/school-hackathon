@@ -22,13 +22,14 @@ const events = [
   {
     icon: Brain,
     tag: "Day 8 — Event 02",
-    title: "General Awareness Quiz",
+    title: "Knowledge & Aptitude Quiz",
     description:
-      "A fun and engaging quiz open to all participants, covering general awareness, regional knowledge and basic geography — with a special focus on Uttarakhand. Test your knowledge beyond tech and earn points for your team.",
+      "A fun and engaging quiz open to all participants, covering general awareness, regional knowledge and basic geography — with a special focus on Uttarakhand. We'll also be introducing basic aptitude-style questions to test your logical and analytical thinking. Earn points for your team and score beyond just tech!",
     highlights: [
       "General awareness questions",
       "Regional & geography quiz",
       "Uttarakhand special round",
+      "Basic aptitude & logical reasoning",
       "Scores count toward overall ranking",
     ],
     color: "#c084fc",
