@@ -56,9 +56,9 @@ const steps = [
   },
   {
     step: "08",
-    phase: "Treasure Hunt",
+    phase: "Coding Treasure Hunt",
     icon: Map,
-    desc: "Takes place at Birla campus on Day 8. A campus-wide team treasure hunt with tech-themed clues. Solve puzzles, decode hints, and race to the finish before the main judging begins.",
+    desc: "Takes place at Birla campus on Day 8. A team-based challenge where coding meets adventure — test your Python knowledge, logical reasoning and problem-solving skills through a series of engaging challenges.",
     color: "#f472b6",
   },
   {
