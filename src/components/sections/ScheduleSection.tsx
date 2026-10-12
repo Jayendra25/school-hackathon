@@ -58,21 +58,21 @@ const steps = [
     step: "08",
     phase: "Treasure Hunt",
     icon: Map,
-    desc: "A campus-wide team treasure hunt with tech-themed clues. Solve puzzles, decode hints, and race to the finish before the main judging begins.",
+    desc: "Takes place at Birla campus on Day 8. A campus-wide team treasure hunt with tech-themed clues. Solve puzzles, decode hints, and race to the finish before the main judging begins.",
     color: "#f472b6",
   },
   {
     step: "09",
     phase: "Knowledge & Aptitude Quiz",
     icon: Brain,
-    desc: "Covers general awareness, Uttarakhand geography and basic aptitude & logical reasoning. Top scorers earn special prizes and boost their team's score.",
+    desc: "Takes place at Birla campus on Day 8. Covers general awareness, Uttarakhand geography and basic aptitude & logical reasoning. Top scorers earn special prizes and boost their team's score.",
     color: "#818cf8",
   },
   {
     step: "10",
     phase: "Results & Awards",
     icon: Trophy,
-    desc: "Overall winners are decided on combined scores from all three events — Hackathon, Quiz and Treasure Hunt. Trophies, prizes and certificates distributed on stage.",
+    desc: "Announced at Birla campus on Day 8, once all three events wrap up. Winners decided on combined scores — Hackathon, Quiz & Treasure Hunt. Trophies, prizes and certificates on stage.",
     color: "#f6d365",
     gold: true,
   },
@@ -221,31 +221,40 @@ export default function ScheduleSection() {
                 </div>
 
                 {/* Down arrow between rows */}
-                {rowIdx < rows.length - 1 && (
-                  <motion.div
-                    className="flex my-4"
-                    style={{ justifyContent: rowIdx % 2 === 0 ? "flex-end" : "flex-start" }}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.35 }}
-                  >
-                    <div
-                      style={{
-                        width: "calc(25% - 8px)",
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
+                {rowIdx < rows.length - 1 && (() => {
+                  // last card in the current row (rightmost on even, leftmost on odd — but always step at end of row)
+                  const lastStep = row[row.length - 1];
+                  const arrowColor = lastStep.color;
+                  return (
+                    <motion.div
+                      className="flex my-4"
+                      style={{ justifyContent: rowIdx % 2 === 0 ? "flex-end" : "flex-start" }}
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: 0.35 }}
                     >
                       <div
-                        className="flex items-center justify-center w-6 h-6 rounded-full"
-                        style={{ background: "var(--bg-raised)", border: "1px solid var(--border-strong)" }}
+                        style={{
+                          width: "calc(25% - 8px)",
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
                       >
-                        <ArrowDown style={{ width: 11, height: 11, color: "var(--text-muted)" }} />
+                        <div
+                          className="flex items-center justify-center w-7 h-7 rounded-full"
+                          style={{
+                            background: `${arrowColor}20`,
+                            border: `1px solid ${arrowColor}60`,
+                            boxShadow: `0 0 8px ${arrowColor}30`,
+                          }}
+                        >
+                          <ArrowDown style={{ width: 12, height: 12, color: arrowColor }} />
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
-                )}
+                    </motion.div>
+                  );
+                })()}
               </div>
             );
           })}
