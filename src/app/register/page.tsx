@@ -161,7 +161,7 @@ export default function RegisterPage() {
             transition={{ duration: 0.45, ease: "easeOut" }}
           >
             <h1
-              className="text-[38px] sm:text-[52px] font-black tracking-[-0.025em] leading-[1.05] mb-3 flex items-center justify-center flex-wrap gap-3"
+              className="text-[38px] sm:text-[52px] font-black tracking-[-0.025em] leading-[1.05] mb-3 w-full text-center"
               style={{ color: "var(--text)" }}
             >
               Register for{" "}
