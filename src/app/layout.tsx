@@ -32,11 +32,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" data-theme="light">
       <head>
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#fafafa" />
+        {/* Prevent flash of wrong theme — set data-theme before paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.setAttribute('data-theme', 'light');`,
+          }}
+        />
       </head>
-      <body className={`${urbanist.className} min-h-screen antialiased selection:bg-[#8B5CF6]/30 selection:text-white`}>
+      <body className={`${urbanist.className} min-h-screen antialiased selection:bg-[#8B5CF6]/30 selection:text-[#09090b]`}>
         {children}
       </body>
     </html>
