@@ -10,6 +10,7 @@ const stats = [
     unit: "Days",
     title: "Build Period",
     desc: "Work from home or school for 7 days, then come to the Birla campus on Day 8 for the live showcase and judging.",
+    color: "#8b5cf6",
   },
   {
     icon: Users,
@@ -17,6 +18,7 @@ const stats = [
     unit: "Members",
     title: "Team Size",
     desc: "Solo or squad — form a team of up to 5 school students and build together.",
+    color: "#38bdf8",
   },
   {
     icon: Layers,
@@ -24,6 +26,7 @@ const stats = [
     unit: "Tracks",
     title: "Choose Your Domain",
     desc: "Web Development, Android App Development, or AI & Innovation — pick what excites you.",
+    color: "#f6d365",
   },
   {
     icon: Lightbulb,
@@ -31,6 +34,7 @@ const stats = [
     unit: "Min Demo",
     title: "Final Showcase",
     desc: "Present your problem, solution, tech stack and live demo to the judging panel.",
+    color: "#34d399",
   },
 ];
 
@@ -81,13 +85,35 @@ export default function AboutSection() {
             return (
               <motion.div
                 key={stat.unit}
-                className="card-glass p-6 flex flex-col"
+                className="card-glass p-6 flex flex-col relative overflow-hidden"
+                style={{
+                  borderColor: `${stat.color}45`,
+                  boxShadow: `0 0 0 1px ${stat.color}15, 0 4px 24px ${stat.color}0a`,
+                }}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.07, ease: "easeOut" }}
               >
-                <div className="icon-box mb-5">
+                {/* Top accent bar */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[3px]"
+                  style={{ background: `linear-gradient(90deg, transparent, ${stat.color}, transparent)` }}
+                />
+                {/* Corner glow */}
+                <div
+                  className="absolute -top-10 -right-10 w-24 h-24 rounded-full pointer-events-none"
+                  style={{ background: `radial-gradient(circle, ${stat.color}12 0%, transparent 70%)` }}
+                />
+
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-5 flex-shrink-0"
+                  style={{
+                    background: `${stat.color}18`,
+                    border: `1px solid ${stat.color}40`,
+                    color: stat.color,
+                  }}
+                >
                   <Icon style={{ width: 18, height: 18 }} />
                 </div>
 
@@ -99,7 +125,7 @@ export default function AboutSection() {
                 </div>
                 <div
                   className="text-sm font-semibold mt-0.5 mb-4"
-                  style={{ color: "var(--accent)" }}
+                  style={{ color: stat.color }}
                 >
                   {stat.unit}
                 </div>

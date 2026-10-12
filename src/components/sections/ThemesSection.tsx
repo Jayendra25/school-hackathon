@@ -11,7 +11,7 @@ const tracks = [
     description:
       "Build a useful website or web application using HTML, CSS and JavaScript. Want extra points? Build using MERN, PHP or any other framework.",
     examples: ["School utility site", "Community platform", "Interactive web app", "E-learning portal"],
-    color: "var(--accent)",
+    color: "#8b5cf6",
   },
   {
     icon: Smartphone,
@@ -79,13 +79,40 @@ export default function ThemesSection() {
             return (
               <motion.div
                 key={track.title}
-                className="card-glass p-7 flex flex-col group"
-                style={track.gold ? { borderColor: "rgba(246,211,101,0.3)" } : undefined}
+                className="card-glass p-7 flex flex-col group relative overflow-hidden"
+                style={track.gold
+                  ? {
+                      borderColor: "rgba(246,211,101,0.45)",
+                      boxShadow: "0 0 0 1px rgba(246,211,101,0.15), 0 4px 24px rgba(246,211,101,0.08)",
+                    }
+                  : {
+                      borderColor: `${track.color}55`,
+                      boxShadow: `0 0 0 1px ${track.color}15, 0 4px 24px ${track.color}0a`,
+                    }
+                }
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: index * 0.08, ease: "easeOut" }}
               >
+                {/* Top accent bar */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[3px]"
+                  style={{
+                    background: track.gold
+                      ? "linear-gradient(90deg, transparent, rgba(246,211,101,0.8), transparent)"
+                      : `linear-gradient(90deg, transparent, ${track.color}, transparent)`,
+                  }}
+                />
+                {/* Corner glow */}
+                <div
+                  className="absolute -top-12 -right-12 w-32 h-32 rounded-full pointer-events-none"
+                  style={{
+                    background: track.gold
+                      ? "radial-gradient(circle, rgba(246,211,101,0.08) 0%, transparent 70%)"
+                      : `radial-gradient(circle, ${track.color}12 0%, transparent 70%)`,
+                  }}
+                />
                 {/* Tag */}
                 <span
                   className="text-[10px] font-bold uppercase tracking-widest mb-4"

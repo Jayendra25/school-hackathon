@@ -181,9 +181,20 @@ export default function PrizesSection() {
               return (
                 <div
                   key={a.title}
-                  className="card-glass p-4 flex items-center gap-3"
-                  style={{ borderColor: "rgba(192,132,252,0.25)" }}
+                  className="card-glass p-4 flex items-center gap-3 relative overflow-hidden"
+                  style={{
+                    borderColor: "rgba(192,132,252,0.45)",
+                    boxShadow: "0 0 0 1px rgba(192,132,252,0.12), 0 4px 20px rgba(192,132,252,0.08)",
+                  }}
                 >
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[2px]"
+                    style={{ background: "linear-gradient(90deg, transparent, rgba(192,132,252,0.8), transparent)" }}
+                  />
+                  <div
+                    className="absolute -top-8 -right-8 w-20 h-20 rounded-full pointer-events-none"
+                    style={{ background: "radial-gradient(circle, rgba(192,132,252,0.1) 0%, transparent 70%)" }}
+                  />
                   <div
                     className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                     style={{ background: "rgba(192,132,252,0.1)", border: "1px solid rgba(192,132,252,0.3)", color: "#c084fc" }}
@@ -215,7 +226,22 @@ export default function PrizesSection() {
             {specialAwards.map((a) => {
               const Icon = a.icon;
               return (
-                <div key={a.title} className="card-glass p-4 flex items-center gap-3">
+                <div
+                  key={a.title}
+                  className="card-glass p-4 flex items-center gap-3 relative overflow-hidden"
+                  style={{
+                    borderColor: "rgba(139,92,246,0.45)",
+                    boxShadow: "0 0 0 1px rgba(139,92,246,0.12), 0 4px 20px rgba(139,92,246,0.08)",
+                  }}
+                >
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[2px]"
+                    style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.8), transparent)" }}
+                  />
+                  <div
+                    className="absolute -top-8 -right-8 w-20 h-20 rounded-full pointer-events-none"
+                    style={{ background: "radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)" }}
+                  />
                   <div className="icon-box flex-shrink-0" style={{ width: 32, height: 32, borderRadius: 8 }}>
                     <Icon style={{ width: 14, height: 14 }} />
                   </div>
