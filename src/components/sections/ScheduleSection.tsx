@@ -54,9 +54,9 @@ const steps = [
   },
   {
     step: "09",
-    phase: "Day 8 — General Awareness Quiz",
+    phase: "Day 8 — Knowledge & Aptitude Quiz",
     icon: Brain,
-    desc: "A general awareness quiz covering regional knowledge, basic geography and Uttarakhand-focused questions. Open to all participants — top scorers earn special prizes and contribute to their team's overall score.",
+    desc: "A general awareness quiz covering regional knowledge, basic geography and Uttarakhand-focused questions — plus basic aptitude & logical reasoning rounds. Open to all participants — top scorers earn special prizes and contribute to their team's overall score.",
   },
   {
     step: "10",

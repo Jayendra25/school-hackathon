@@ -38,7 +38,7 @@ const faqs = [
   {
     question: "How is the judging done?",
     answer:
-      "Overall rankings are based on combined scores from all three Day 8 events — Hackathon Showcase, Quiz, and Treasure Hunt. For the Hackathon, judges evaluate teams on: Idea & Creativity, Problem Relevance, Working Prototype, Technical Understanding, Live Modification and Presentation. Quiz and Treasure Hunt scores are added on top to determine the final standings.",
+      "Overall rankings are based on combined scores from all three Day 8 events — Hackathon Showcase, Knowledge & Aptitude Quiz, and Treasure Hunt. For the Hackathon, judges evaluate teams on: Idea & Creativity, Problem Relevance, Working Prototype, Technical Understanding, Live Modification and Presentation. Quiz and Treasure Hunt scores are added on top to determine the final standings.",
   },
   {
     question: "What do winners receive?",
