@@ -7,31 +7,6 @@
 
 /* ── Theme Tokens ── */
 :root,
-[data-theme="dark"],
-.theme-dark {
-  --bg:              #0a0a0b;
-  --bg-raised:       #111113;
-  --surface:         #18181b;
-  --border:          rgba(255, 255, 255, 0.08);
-  --border-strong:   rgba(255, 255, 255, 0.14);
-  --border-accent:   rgba(139, 92, 246, 0.3);
-  --text:            #f4f4f5;
-  --text-secondary:  #d4d4d8;
-  --text-muted:      #71717a;
-  --accent:          #8b5cf6;
-  --accent-dim:      rgba(139, 92, 246, 0.12);
-  --accent-glow:     rgba(139, 92, 246, 0.18);
-  --shadow-sm:       0 1px 3px rgba(0, 0, 0, 0.4);
-  --shadow-md:       0 4px 16px rgba(0, 0, 0, 0.45);
-  --shadow-hover:    0 8px 24px rgba(0, 0, 0, 0.5);
-  --nav-bg:          rgba(10, 10, 11, 0.75);
-  --nav-bg-scrolled: rgba(10, 10, 11, 0.92);
-  --nav-border:      rgba(255, 255, 255, 0.08);
-  --scrollbar-track: #0a0a0b;
-  --scrollbar-thumb: #27272a;
-  --grid-dot:        rgba(255, 255, 255, 0.04);
-}
-
 [data-theme="light"],
 .theme-light {
   --bg:              #fafafa;
@@ -55,6 +30,31 @@
   --scrollbar-track: #fafafa;
   --scrollbar-thumb: #d4d4d8;
   --grid-dot:        rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"],
+.theme-dark {
+  --bg:              #0a0a0b;
+  --bg-raised:       #111113;
+  --surface:         #18181b;
+  --border:          rgba(255, 255, 255, 0.08);
+  --border-strong:   rgba(255, 255, 255, 0.14);
+  --border-accent:   rgba(139, 92, 246, 0.3);
+  --text:            #f4f4f5;
+  --text-secondary:  #d4d4d8;
+  --text-muted:      #71717a;
+  --accent:          #8b5cf6;
+  --accent-dim:      rgba(139, 92, 246, 0.12);
+  --accent-glow:     rgba(139, 92, 246, 0.18);
+  --shadow-sm:       0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md:       0 4px 16px rgba(0, 0, 0, 0.45);
+  --shadow-hover:    0 8px 24px rgba(0, 0, 0, 0.5);
+  --nav-bg:          rgba(10, 10, 11, 0.75);
+  --nav-bg-scrolled: rgba(10, 10, 11, 0.92);
+  --nav-border:      rgba(255, 255, 255, 0.08);
+  --scrollbar-track: #0a0a0b;
+  --scrollbar-thumb: #27272a;
+  --grid-dot:        rgba(255, 255, 255, 0.04);
 }
 
 /* ── View Transition Ripple ── */
