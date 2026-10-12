@@ -81,13 +81,40 @@ export default function Day8EventsSection() {
             return (
               <motion.div
                 key={event.title}
-                className="card-glass p-7 flex flex-col"
-                style={event.gold ? { borderColor: "rgba(246,211,101,0.3)" } : { borderColor: `${event.color}30` }}
+                className="card-glass p-7 flex flex-col relative overflow-hidden"
+                style={event.gold
+                  ? {
+                      borderColor: "rgba(246,211,101,0.45)",
+                      boxShadow: "0 0 0 1px rgba(246,211,101,0.15), 0 4px 24px rgba(246,211,101,0.08)",
+                    }
+                  : {
+                      borderColor: `${event.color}55`,
+                      boxShadow: `0 0 0 1px ${event.color}15, 0 4px 24px ${event.color}0a`,
+                    }
+                }
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: index * 0.1, ease: "easeOut" }}
               >
+                {/* Top accent bar */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[3px]"
+                  style={{
+                    background: event.gold
+                      ? "linear-gradient(90deg, transparent, rgba(246,211,101,0.8), transparent)"
+                      : `linear-gradient(90deg, transparent, ${event.color}, transparent)`,
+                  }}
+                />
+                {/* Corner glow */}
+                <div
+                  className="absolute -top-12 -right-12 w-32 h-32 rounded-full pointer-events-none"
+                  style={{
+                    background: event.gold
+                      ? "radial-gradient(circle, rgba(246,211,101,0.08) 0%, transparent 70%)"
+                      : `radial-gradient(circle, ${event.color}12 0%, transparent 70%)`,
+                  }}
+                />
                 {/* Tag */}
                 <span
                   className="text-[10px] font-bold uppercase tracking-widest mb-4"
