@@ -6,7 +6,7 @@ import { Zap } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center pt-32 pb-20 overflow-hidden bg-grid-pattern">
+    <section className="relative min-h-[92vh] flex items-center justify-center pt-32 pb-20 overflow-x-hidden bg-grid-pattern">
       <div className="app-container relative z-10 text-center flex flex-col items-center">
 
         {/* Event badge */}
@@ -29,7 +29,7 @@ export default function HeroSection() {
 
         {/* Main Heading */}
         <motion.h1
-          className="text-[64px] sm:text-[80px] lg:text-[100px] font-black tracking-[-0.03em] leading-[0.95] mb-4 flex items-center justify-center gap-3"
+          className="text-[48px] sm:text-[80px] lg:text-[100px] font-black tracking-[-0.03em] leading-[0.95] mb-4 flex items-center justify-center gap-2 sm:gap-3 w-full"
           style={{ color: "var(--text)" }}
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
