@@ -7,13 +7,13 @@ const events = [
   {
     icon: Map,
     tag: "Day 8 — Event 01",
-    title: "Treasure Hunt",
+    title: "Python & Coding Treasure Hunt",
     description:
-      "A campus-wide team treasure hunt with tech-themed clues hidden across the college. Solve puzzles, decode hints, and race to the finish — a fun warm-up before the main judging begins.",
+      "A team-based challenge where coding meets adventure! Put your Python knowledge, logical reasoning and problem-solving skills to the test through an engaging series of challenges. Combining computational thinking with teamwork and friendly competition — race toward the ultimate goal.",
     highlights: [
-      "Tech-themed clues & puzzles",
-      "Campus-wide exploration",
-      "Team-based challenge",
+      "Python & coding challenges",
+      "Logical reasoning rounds",
+      "Team-based competition",
       "Scores count toward overall ranking",
     ],
     color: "#f6d365",
