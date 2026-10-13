@@ -77,10 +77,15 @@ function TopBar() {
     >
       <Link
         href="/"
-        className="inline-flex items-center gap-2 text-sm font-medium transition-opacity hover:opacity-70"
-        style={{ color: "var(--text-muted)" }}
+        className="inline-flex items-center gap-1.5 text-[13px] font-semibold rounded-lg px-3 py-1.5 transition-all duration-150 hover:opacity-85 active:scale-95"
+        style={{
+          color: "var(--text)",
+          background: "var(--bg-raised)",
+          border: "1px solid var(--border-strong)",
+          boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
+        }}
       >
-        <ArrowLeft style={{ width: 15, height: 15 }} />
+        <ArrowLeft style={{ width: 14, height: 14 }} />
         Back to site
       </Link>
 
