@@ -304,3 +304,19 @@ body {
 ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
 ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 9999px; }
 ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes floatGlow {
+  0%, 100% {
+    box-shadow: 0 0 16px 4px rgba(139,92,246,0.45), 0 0 40px 8px rgba(192,132,252,0.2), 0 4px 24px rgba(0,0,0,0.35);
+  }
+  50% {
+    box-shadow: 0 0 28px 8px rgba(139,92,246,0.7), 0 0 60px 16px rgba(192,132,252,0.35), 0 4px 24px rgba(0,0,0,0.35);
+  }
+}
