@@ -4,8 +4,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AlertTriangle, Calendar, Clock, X, Zap } from "lucide-react";
 
-// All colours are hard-coded dark-theme values so the modal is always
-// legible regardless of whether the user has light or dark mode active.
 const C = {
   bg:           "#111113",
   surface:      "#1a1a1f",
@@ -29,66 +27,78 @@ export default function AnnouncementBanner() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           onClick={() => setDismissed(true)}
           style={{
             position: "fixed",
             inset: 0,
             zIndex: 9500,
+            /* scroll container so card never clips off-screen on small phones */
+            overflowY: "auto",
+            overflowX: "hidden",
+            WebkitOverflowScrolling: "touch",
             display: "flex",
-            alignItems: "center",
+            alignItems: "flex-start",
             justifyContent: "center",
-            padding: "20px",
+            /* top/bottom padding keeps card away from edges + notch */
+            padding: "env(safe-area-inset-top, 24px) 16px env(safe-area-inset-bottom, 24px)",
+            paddingTop: "max(env(safe-area-inset-top, 0px), 24px)",
+            paddingBottom: "max(env(safe-area-inset-bottom, 0px), 24px)",
             background: "rgba(0,0,0,0.65)",
             backdropFilter: "blur(10px)",
             WebkitBackdropFilter: "blur(10px)",
           }}
         >
-          {/* ── Modal card ── */}
+          {/* ── Modal card — no overflow:hidden so X is never clipped ── */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 32 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.94, y: 16 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            /* No scale on mobile — translateY only to avoid jitter */
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             onClick={(e) => e.stopPropagation()}
             style={{
               position: "relative",
               width: "100%",
-              maxWidth: 640,
-              maxHeight: "90vh",
-              overflowY: "auto",
+              maxWidth: 620,
+              /* no maxHeight / overflowY here — parent scroll handles it */
               borderRadius: 20,
               background: C.bg,
               border: `1px solid ${C.borderAccent}`,
               boxShadow:
-                "0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(139,92,246,0.1), 0 0 60px rgba(139,92,246,0.12)",
-              /* subtle dot grid */
+                "0 24px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(139,92,246,0.1), 0 0 50px rgba(139,92,246,0.1)",
               backgroundImage:
-                "radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px)",
+                "radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)",
               backgroundSize: "28px 28px",
+              /* margin so card doesn't butt against top on tiny screens */
+              marginTop: 8,
+              marginBottom: 8,
             }}
           >
-            {/* Royal gradient top bar */}
+            {/* Gradient top bar */}
             <div
               style={{
                 height: 3,
                 borderRadius: "20px 20px 0 0",
-                background:
-                  "linear-gradient(90deg, #8b5cf6 0%, #c084fc 50%, #f6d365 100%)",
-                boxShadow: "0 0 20px rgba(139,92,246,0.45)",
+                background: "linear-gradient(90deg, #8b5cf6 0%, #c084fc 50%, #f6d365 100%)",
+                boxShadow: "0 0 16px rgba(139,92,246,0.4)",
               }}
             />
 
-            {/* ✕ close */}
+            {/* ✕ close — sticky inside the card, never clips */}
             <button
               onClick={() => setDismissed(true)}
               aria-label="Close announcement"
               style={{
-                position: "absolute",
-                top: 16,
-                right: 16,
-                width: 30,
-                height: 30,
+                position: "sticky",
+                top: 12,
+                float: "right",
+                /* pull it into the top-right corner */
+                marginTop: -6,
+                marginRight: 12,
+                marginBottom: -30,
+                width: 34,
+                height: 34,
                 borderRadius: 8,
                 display: "flex",
                 alignItems: "center",
@@ -97,35 +107,40 @@ export default function AnnouncementBanner() {
                 border: `1px solid ${C.borderAccent}`,
                 cursor: "pointer",
                 color: C.accent,
-                zIndex: 2,
+                zIndex: 10,
                 flexShrink: 0,
               }}
             >
-              <X size={14} />
+              <X size={15} />
             </button>
 
             {/* ── Content ── */}
-            <div style={{ padding: "28px 28px 32px" }}>
+            <div
+              style={{
+                padding: "20px 20px 28px",
+                /* clear the floated X */
+                overflow: "hidden",
+              }}
+            >
 
               {/* Live badge */}
-              <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: 18 }}>
                 <span
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
                     gap: 7,
-                    fontSize: "0.65rem",
+                    fontSize: "0.63rem",
                     fontWeight: 700,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
                     color: "#22c55e",
                     background: "rgba(34,197,94,0.1)",
-                    border: "1px solid rgba(34,197,94,0.35)",
+                    border: "1px solid rgba(34,197,94,0.3)",
                     borderRadius: 999,
                     padding: "5px 14px",
                   }}
                 >
-                  {/* pulse dot */}
                   <span style={{ position: "relative", display: "flex", width: 7, height: 7 }}>
                     <span
                       style={{
@@ -133,7 +148,7 @@ export default function AnnouncementBanner() {
                         inset: 0,
                         borderRadius: "50%",
                         background: "#22c55e",
-                        opacity: 0.55,
+                        opacity: 0.5,
                         animation: "ping 1.2s cubic-bezier(0,0,0.2,1) infinite",
                       }}
                     />
@@ -159,13 +174,13 @@ export default function AnnouncementBanner() {
                   flexDirection: "column",
                   alignItems: "center",
                   textAlign: "center",
-                  marginBottom: 22,
+                  marginBottom: 20,
                 }}
               >
                 <div
                   style={{
-                    width: 56,
-                    height: 56,
+                    width: 52,
+                    height: 52,
                     borderRadius: "50%",
                     background: C.accentDim,
                     border: `1px solid ${C.borderAccent}`,
@@ -173,16 +188,17 @@ export default function AnnouncementBanner() {
                     alignItems: "center",
                     justifyContent: "center",
                     marginBottom: 14,
-                    boxShadow: "0 0 24px rgba(139,92,246,0.2)",
+                    boxShadow: "0 0 20px rgba(139,92,246,0.18)",
                     color: C.accent,
+                    flexShrink: 0,
                   }}
                 >
-                  <AlertTriangle size={24} />
+                  <AlertTriangle size={22} />
                 </div>
 
                 <h2
                   style={{
-                    fontSize: "clamp(1.2rem, 3.5vw, 1.6rem)",
+                    fontSize: "clamp(1.15rem, 5vw, 1.55rem)",
                     fontWeight: 800,
                     color: C.text,
                     letterSpacing: "-0.025em",
@@ -203,20 +219,27 @@ export default function AnnouncementBanner() {
                   >
                     Has Officially Started!
                   </span>
-                  <br />
-                  <span style={{ fontSize: "0.6em", color: C.textMuted, fontWeight: 600, letterSpacing: "0.01em" }}>
-                    You can still join — here&apos;s what you need to know ↓
-                  </span>
                 </h2>
+
+                <p
+                  style={{
+                    marginTop: 8,
+                    fontSize: "clamp(0.75rem, 3vw, 0.85rem)",
+                    color: C.textMuted,
+                    fontWeight: 500,
+                  }}
+                >
+                  You can still join — here&apos;s what you need to know ↓
+                </p>
               </div>
 
-              {/* Date cards */}
+              {/* Date cards — stack on very small screens */}
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
                   gap: 10,
-                  marginBottom: 20,
+                  marginBottom: 18,
                 }}
               >
                 {[
@@ -239,7 +262,7 @@ export default function AnnouncementBanner() {
                       background: C.surface,
                       border: `1px solid ${C.border}`,
                       borderRadius: 12,
-                      padding: "14px 16px",
+                      padding: "12px 14px",
                     }}
                   >
                     <div
@@ -253,7 +276,7 @@ export default function AnnouncementBanner() {
                       {card.icon}
                       <span
                         style={{
-                          fontSize: "0.62rem",
+                          fontSize: "0.6rem",
                           fontWeight: 700,
                           letterSpacing: "0.1em",
                           textTransform: "uppercase",
@@ -263,34 +286,31 @@ export default function AnnouncementBanner() {
                         {card.label}
                       </span>
                     </div>
-                    <div
-                      style={{ fontSize: "0.92rem", fontWeight: 700, color: C.text }}
-                    >
+                    <div style={{ fontSize: "clamp(0.82rem, 3vw, 0.92rem)", fontWeight: 700, color: C.text }}>
                       {card.date}
                     </div>
-                    <div style={{ fontSize: "0.78rem", color: C.textMuted, marginTop: 2 }}>
+                    <div style={{ fontSize: "0.75rem", color: C.textMuted, marginTop: 2 }}>
                       {card.time}
                     </div>
                   </div>
                 ))}
               </div>
 
-              {/* Body paragraph */}
+              {/* Body */}
               <p
                 style={{
-                  fontSize: "0.82rem",
+                  fontSize: "clamp(0.78rem, 3vw, 0.82rem)",
                   color: C.textMuted,
                   lineHeight: 1.7,
                   textAlign: "center",
-                  marginBottom: 18,
+                  marginBottom: 16,
                 }}
               >
                 The TechSpark 2026 Hackathon officially commenced on{" "}
                 <strong style={{ color: C.textSec }}>16 October 2026 at 4:00 PM IST</strong>.
                 All participating teams are allotted a total duration of{" "}
                 <strong style={{ color: C.textSec }}>7 days</strong>, with the final deadline
-                set for{" "}
-                <strong style={{ color: C.textSec }}>23 October 2026 at 3:00 PM IST</strong>.
+                set for <strong style={{ color: C.textSec }}>23 October 2026 at 3:00 PM IST</strong>.
               </p>
 
               {/* Rules */}
@@ -299,13 +319,13 @@ export default function AnnouncementBanner() {
                   background: C.accentDim,
                   border: `1px solid ${C.borderAccent}`,
                   borderRadius: 12,
-                  padding: "14px 16px",
-                  marginBottom: 22,
+                  padding: "12px 14px",
+                  marginBottom: 20,
                 }}
               >
                 <div
                   style={{
-                    fontSize: "0.62rem",
+                    fontSize: "0.6rem",
                     fontWeight: 800,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
@@ -338,7 +358,7 @@ export default function AnnouncementBanner() {
                         display: "flex",
                         alignItems: "flex-start",
                         gap: 9,
-                        fontSize: "0.79rem",
+                        fontSize: "clamp(0.73rem, 3vw, 0.79rem)",
                         color: C.textMuted,
                         lineHeight: 1.6,
                       }}
@@ -346,7 +366,7 @@ export default function AnnouncementBanner() {
                       <span
                         style={{
                           flexShrink: 0,
-                          marginTop: "0.4em",
+                          marginTop: "0.42em",
                           width: 5,
                           height: 5,
                           borderRadius: "50%",
@@ -365,9 +385,8 @@ export default function AnnouncementBanner() {
                   fontSize: "0.78rem",
                   fontWeight: 600,
                   textAlign: "center",
-                  marginBottom: 22,
-                  background:
-                    "linear-gradient(135deg, #f6d365 0%, #fda085 40%, #f0a500 100%)",
+                  marginBottom: 20,
+                  background: "linear-gradient(135deg, #f6d365 0%, #fda085 40%, #f0a500 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -393,16 +412,9 @@ export default function AnnouncementBanner() {
                     letterSpacing: "-0.01em",
                     border: "none",
                     cursor: "pointer",
-                    boxShadow: "0 0 20px rgba(139,92,246,0.25), 0 4px 16px rgba(0,0,0,0.3)",
-                    transition: "opacity 0.2s ease, transform 0.2s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.opacity = "0.88";
-                    e.currentTarget.style.transform = "translateY(-1px)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.opacity = "1";
-                    e.currentTarget.style.transform = "translateY(0)";
+                    width: "100%",
+                    justifyContent: "center",
+                    boxShadow: "0 0 20px rgba(139,92,246,0.2), 0 4px 16px rgba(0,0,0,0.3)",
                   }}
                 >
                   <Zap size={15} />
