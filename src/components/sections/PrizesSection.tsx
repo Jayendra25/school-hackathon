@@ -9,39 +9,51 @@ const mainAwards = [
     rank: "🥇 Champion",
     title: "Hackathon Champion",
     who: "Highest combined score across Hackathon + Quiz + Treasure Hunt",
-    recognition: "Winner Trophy + Winner Certificates + Prize",
+    perks: "Winner Trophy + Winner Certificates",
+    prize: "₹20,000",
     border: "rgba(246,211,101,0.45)",
     glow: "rgba(246,211,101,0.13)",
     iconBg: "rgba(246,211,101,0.12)",
     iconBorder: "rgba(246,211,101,0.4)",
     iconColor: "#f6d365",
     rankColor: "#f6d365",
+    prizeGlow: "rgba(246,211,101,0.25)",
+    prizeBorder: "rgba(246,211,101,0.5)",
+    prizeColor: "#f6d365",
   },
   {
     icon: Medal,
     rank: "🥈 Runner-Up",
     title: "1st Runner-Up",
     who: "Second-highest combined score across all three events",
-    recognition: "Runner-Up Trophy + Certificates + Prize",
+    perks: "Runner-Up Trophy + Certificates",
+    prize: "₹15,000",
     border: "rgba(192,200,215,0.45)",
     glow: "rgba(192,200,215,0.10)",
     iconBg: "rgba(192,200,215,0.10)",
     iconBorder: "rgba(192,200,215,0.35)",
     iconColor: "#c8d0db",
     rankColor: "#c8d0db",
+    prizeGlow: "rgba(192,200,215,0.2)",
+    prizeBorder: "rgba(192,200,215,0.5)",
+    prizeColor: "#c8d0db",
   },
   {
     icon: Medal,
     rank: "🥉 Runner-Up",
     title: "2nd Runner-Up",
     who: "Third-highest combined score across all three events",
-    recognition: "Runner-Up Trophy + Certificates + Prize",
+    perks: "Runner-Up Trophy + Certificates",
+    prize: "₹10,000",
     border: "rgba(205,127,50,0.45)",
     glow: "rgba(205,127,50,0.10)",
     iconBg: "rgba(205,127,50,0.10)",
     iconBorder: "rgba(205,127,50,0.35)",
     iconColor: "#cd7f32",
     rankColor: "#cd7f32",
+    prizeGlow: "rgba(205,127,50,0.2)",
+    prizeBorder: "rgba(205,127,50,0.5)",
+    prizeColor: "#cd7f32",
   },
 ];
 
@@ -150,14 +162,35 @@ export default function PrizesSection() {
                 <h3 className="text-base font-bold mb-1" style={{ color: "var(--text)" }}>
                   {award.title}
                 </h3>
-                <p className="text-xs mb-3" style={{ color: "var(--text-muted)" }}>
+                {/* Fixed height so voucher box always sits at the same vertical position */}
+                <p className="text-xs mb-3 flex items-center justify-center" style={{ color: "var(--text-muted)", minHeight: "2.5rem" }}>
                   {award.who}
                 </p>
+
+                {/* Prize Voucher — highlighted */}
+                <div
+                  className="w-full rounded-xl px-4 py-3 mb-3 flex flex-col items-center"
+                  style={{
+                    background: award.prizeGlow,
+                    border: `1.5px solid ${award.prizeBorder}`,
+                  }}
+                >
+                  <span className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: award.prizeColor, opacity: 0.8 }}>
+                    Prize Voucher
+                  </span>
+                  <span className="text-2xl font-extrabold tracking-tight" style={{ color: award.prizeColor }}>
+                    {award.prize}
+                  </span>
+                  <span className="text-[10px] mt-0.5" style={{ color: award.prizeColor, opacity: 0.7 }}>
+                    worth of vouchers
+                  </span>
+                </div>
+
                 <p
                   className="text-xs px-3 py-1.5 rounded-full"
                   style={{ background: "var(--bg-raised)", color: "var(--text-secondary)", border: "1px solid var(--border)" }}
                 >
-                  {award.recognition}
+                  {award.perks}
                 </p>
               </motion.div>
             );
