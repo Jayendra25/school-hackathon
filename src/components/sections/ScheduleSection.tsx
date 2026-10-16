@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Megaphone, ClipboardList, BookOpen, UserCheck, Clock, Code2, Presentation, Trophy, Map, Brain } from "lucide-react";
+import { Megaphone, ClipboardList, BookOpen, Clock, Code2, Presentation, Trophy, Map, Brain } from "lucide-react";
 import { ArrowRight, ArrowLeft, ArrowDown } from "lucide-react";
 
 const steps = [
@@ -28,51 +28,50 @@ const steps = [
   },
   {
     step: "04",
-    phase: "Registration Closes",
-    icon: UserCheck,
-    desc: "No new team registrations after the deadline. Registered teams receive confirmation and official channel access.",
-    color: "#e879f9",
+    phase: "Build Week Begins",
+    icon: Clock,
+    date: "16 October 2026 — 4:00 PM",
+    desc: "The 7-day build phase kicks off today! Students work from home or school — no need to come to campus during these days. The clock is running — start building now.",
+    color: "#38bdf8",
+    highlight: true,
   },
   {
     step: "05",
-    phase: "Build Week Begins",
-    icon: Clock,
-    desc: "The 7-day build phase starts. Students work from home or school — no need to come to campus during these days.",
-    color: "#38bdf8",
-  },
-  {
-    step: "06",
     phase: "7-Day Build Sprint",
     icon: Code2,
     desc: "Build at your own pace from anywhere — home, school, library. Mentor instructions and updates shared on the official WhatsApp channel.",
     color: "#34d399",
   },
   {
-    step: "07",
+    step: "06",
     phase: "Showcase & Judging",
     icon: Presentation,
-    desc: "All teams report to the Birla campus. Live demo (7–10 min), judge Q&A, and an on-the-spot live modification challenge.",
+    date: "23 October 2026 — Final Deadline 3:00 PM IST",
+    desc: "All teams report to the Birla campus. Live demo (7–10 min), judge Q&A, and an on-the-spot live modification challenge. Submission deadline: 3:00 PM IST.",
     color: "#fb923c",
   },
   {
-    step: "08",
+    step: "07",
     phase: "Coding Treasure Hunt",
     icon: Map,
-    desc: "Takes place at Birla campus on Day 8. A team-based challenge where coding meets adventure — test your Python knowledge, logical reasoning and problem-solving skills through a series of engaging challenges.",
+    date: "23 October 2026 — Day 8 at Birla Campus",
+    desc: "A team-based challenge where coding meets adventure — test your Python knowledge, logical reasoning and problem-solving skills through a series of engaging challenges.",
     color: "#f472b6",
   },
   {
-    step: "09",
+    step: "08",
     phase: "Knowledge & Aptitude Quiz",
     icon: Brain,
-    desc: "Takes place at Birla campus on Day 8. Covers general awareness, Uttarakhand geography and basic aptitude & logical reasoning. Top scorers earn special prizes and boost their team's score.",
+    date: "23 October 2026 — Day 8 at Birla Campus",
+    desc: "Covers general awareness, Uttarakhand geography and basic aptitude & logical reasoning. Top scorers earn special prizes and boost their team's score.",
     color: "#818cf8",
   },
   {
-    step: "10",
+    step: "09",
     phase: "Results & Awards",
     icon: Trophy,
-    desc: "Announced at Birla campus on Day 8, once all three events wrap up. Winners decided on combined scores — Hackathon, Quiz & Treasure Hunt. Trophies, prizes and certificates on stage.",
+    date: "23 October 2026 — Day 8 at Birla Campus",
+    desc: "Announced once all three events wrap up. Winners decided on combined scores — Hackathon, Quiz & Treasure Hunt. Trophies, prizes and certificates on stage.",
     color: "#f6d365",
     gold: true,
   },
@@ -191,6 +190,19 @@ export default function ScheduleSection() {
                             >
                               {item.phase}
                             </h3>
+                            {item.date && (
+                              <div
+                                className="inline-flex items-center mb-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold"
+                                style={{
+                                  background: `${item.color}18`,
+                                  border: `1px solid ${item.color}40`,
+                                  color: item.color,
+                                  letterSpacing: "0.01em",
+                                }}
+                              >
+                                {item.date}
+                              </div>
+                            )}
                             <p className="text-xs leading-relaxed line-clamp-4" style={{ color: "var(--text-muted)" }}>
                               {item.desc}
                             </p>
@@ -324,6 +336,19 @@ export default function ScheduleSection() {
                         {item.step}
                       </span>
                     </div>
+                    {item.date && (
+                      <div
+                        className="inline-flex items-center mb-2 px-2 py-0.5 rounded-full text-[10px] font-semibold"
+                        style={{
+                          background: `${item.color}18`,
+                          border: `1px solid ${item.color}40`,
+                          color: item.color,
+                          letterSpacing: "0.01em",
+                        }}
+                      >
+                        {item.date}
+                      </div>
+                    )}
                     <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
                       {item.desc}
                     </p>
