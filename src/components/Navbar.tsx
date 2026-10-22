@@ -223,20 +223,10 @@ export default function Navbar() {
             style={{
               background: "var(--text)",
               color: "var(--bg)",
+              opacity: 0.6,
             }}
           >
-            {/* Live pulse dot */}
-            <span className="relative flex h-2 w-2">
-              <span
-                className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                style={{ background: "#22c55e" }}
-              />
-              <span
-                className="relative inline-flex rounded-full h-2 w-2"
-                style={{ background: "#22c55e" }}
-              />
-            </span>
-            Register
+            Closed
           </a>
 
           {/* Mobile menu button */}
@@ -290,19 +280,9 @@ export default function Navbar() {
               <a
                 href={REGISTER_URL}
                 className="flex items-center justify-center gap-2 w-full px-3.5 py-2.5 rounded-lg text-sm font-semibold"
-                style={{ background: "var(--text)", color: "var(--bg)" }}
+                style={{ background: "var(--text)", color: "var(--bg)", opacity: 0.6 }}
               >
-                <span className="relative flex h-2 w-2">
-                  <span
-                    className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-                    style={{ background: "#22c55e" }}
-                  />
-                  <span
-                    className="relative inline-flex rounded-full h-2 w-2"
-                    style={{ background: "#22c55e" }}
-                  />
-                </span>
-                Register Now
+                Registrations Closed
               </a>
             </div>
           </motion.div>

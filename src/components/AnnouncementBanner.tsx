@@ -252,7 +252,7 @@ export default function AnnouncementBanner() {
                   {
                     icon: <Clock size={13} color={C.accent} />,
                     label: "Final Deadline",
-                    date: "23 October 2026",
+                    date: "24 October 2026",
                     time: "3:00 PM IST",
                   },
                 ].map((card) => (
@@ -310,7 +310,7 @@ export default function AnnouncementBanner() {
                 <strong style={{ color: C.textSec }}>16 October 2026 at 4:00 PM IST</strong>.
                 All participating teams are allotted a total duration of{" "}
                 <strong style={{ color: C.textSec }}>7 days</strong>, with the final deadline
-                set for <strong style={{ color: C.textSec }}>23 October 2026 at 3:00 PM IST</strong>.
+                set for <strong style={{ color: C.textSec }}>24 October 2026 at 3:00 PM IST</strong>.
               </p>
 
               {/* Rules */}
@@ -349,7 +349,7 @@ export default function AnnouncementBanner() {
                     "The hackathon timer starts at the official commencement time of 4:00 PM on 16 October 2026.",
                     "Teams joining or registering after the official start time will have their available working time reduced proportionately according to their actual joining time.",
                     "No extension or additional time will be granted to teams joining late.",
-                    "All teams must complete and submit their work by the final deadline of 23 October 2026 at 3:00 PM IST.",
+                    "All teams must complete and submit their work by the final deadline of 24 October 2026 at 3:00 PM IST.",
                     "By registering, teams acknowledge and agree to comply with these timing rules.",
                   ].map((rule, i) => (
                     <li

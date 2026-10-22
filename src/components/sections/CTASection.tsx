@@ -23,7 +23,7 @@ export default function CTASection() {
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <Zap style={{ width: 11, height: 11 }} />
-          Final Call
+          Registrations Closed
         </motion.div>
 
         <motion.h2
@@ -48,8 +48,8 @@ export default function CTASection() {
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: 0.12, ease: "easeOut" }}
         >
-          7 days. 3 tracks. No perfect idea required.{" "}
-          Join TechSpark and turn your idea into a working prototype.
+          The registration form for TechSpark 2026 is now closed. Thank you to all the teams who registered. 
+          We hope to see you participate again next time! For any queries, contact Aditya Suyal.
         </motion.p>
 
         <motion.div
@@ -61,9 +61,9 @@ export default function CTASection() {
           <a
             href={REGISTER_URL}
             className="btn-primary"
-            style={{ padding: "14px 36px", fontSize: 15 }}
+            style={{ padding: "14px 36px", fontSize: 15, opacity: 0.7, cursor: "not-allowed" }}
           >
-            Register for TechSpark
+            Registrations Closed
             <svg
               viewBox="0 0 40 40"
               fill="none"
