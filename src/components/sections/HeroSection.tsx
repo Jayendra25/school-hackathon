@@ -1,8 +1,132 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Zap } from "lucide-react";
+import { Zap, Timer } from "lucide-react";
+import { useState, useEffect } from "react";
 
+// 24 October 2026, 9:00 AM IST (UTC+5:30) — stable constant
+const COUNTDOWN_TARGET = new Date("2026-10-24T09:00:00+05:30");
+
+function useCountdown(target: Date) {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, isOver: false });
+
+  useEffect(() => {
+    const tick = () => {
+      const now = new Date().getTime();
+      const diff = target.getTime() - now;
+
+      if (diff <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0, isOver: true });
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds, isOver: false });
+    };
+
+    tick();
+    const interval = setInterval(tick, 1000);
+    return () => clearInterval(interval);
+  }, [target]);
+
+  return timeLeft;
+}
+
+function CountdownUnit({ value, label }: { value: number; label: string }) {
+  return (
+    <div className="flex flex-col items-center">
+      <div
+        className="relative w-[60px] sm:w-[72px] h-[60px] sm:h-[72px] rounded-2xl flex items-center justify-center"
+        style={{
+          background: "var(--surface)",
+          border: "1px solid var(--border)",
+          boxShadow: "0 0 20px rgba(139,92,246,0.12), inset 0 1px 0 rgba(255,255,255,0.04)",
+        }}
+      >
+        <span
+          className="text-[22px] sm:text-[28px] font-black tabular-nums tracking-tight"
+          style={{ color: "var(--text)" }}
+        >
+          {String(value).padStart(2, "0")}
+        </span>
+      </div>
+      <span
+        className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest mt-2"
+        style={{ color: "var(--text-muted)" }}
+      >
+        {label}
+      </span>
+    </div>
+  );
+}
+
+function Countdown() {
+  const { days, hours, minutes, seconds, isOver } = useCountdown(COUNTDOWN_TARGET);
+
+  if (isOver) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
+        style={{
+          background: "rgba(34,197,94,0.10)",
+          border: "1px solid rgba(34,197,94,0.35)",
+        }}
+      >
+        <span className="relative flex h-2.5 w-2.5">
+          <span
+            className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+            style={{ background: "#22c55e" }}
+          />
+          <span
+            className="relative inline-flex rounded-full h-2.5 w-2.5"
+            style={{ background: "#22c55e" }}
+          />
+        </span>
+        <span className="text-sm font-bold" style={{ color: "#22c55e" }}>
+          Showcase Day is Live!
+        </span>
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      className="flex flex-col items-center gap-4"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+    >
+      {/* Label */}
+      <div className="flex items-center gap-2">
+        <Timer style={{ width: 14, height: 14, color: "var(--accent)" }} />
+        <span
+          className="text-[11px] sm:text-xs font-semibold uppercase tracking-widest"
+          style={{ color: "var(--text-muted)" }}
+        >
+          Time to Start — 24 Oct 2026, 9:00 AM IST
+        </span>
+      </div>
+
+      {/* Timer units */}
+      <div className="flex items-center gap-3 sm:gap-4">
+        <CountdownUnit value={days} label="Days" />
+        <span className="text-2xl font-black" style={{ color: "var(--text-muted)", opacity: 0.4 }}>:</span>
+        <CountdownUnit value={hours} label="Hours" />
+        <span className="text-2xl font-black" style={{ color: "var(--text-muted)", opacity: 0.4 }}>:</span>
+        <CountdownUnit value={minutes} label="Min" />
+        <span className="text-2xl font-black" style={{ color: "var(--text-muted)", opacity: 0.4 }}>:</span>
+        <CountdownUnit value={seconds} label="Sec" />
+      </div>
+    </motion.div>
+  );
+}
 
 export default function HeroSection() {
   return (
@@ -107,6 +231,11 @@ export default function HeroSection() {
             View Tracks
           </a>
         </motion.div>
+
+        {/* Countdown Timer */}
+        <div className="mt-10 mb-2">
+          <Countdown />
+        </div>
 
         {/* Stat strip */}
         <motion.div
