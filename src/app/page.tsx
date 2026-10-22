@@ -21,7 +21,6 @@ const VenueSection         = dynamic(() => import("@/components/sections/VenueSe
 const ContactSection       = dynamic(() => import("@/components/sections/ContactSection"),            { ssr: false });
 const CTASection           = dynamic(() => import("@/components/sections/CTASection"),                { ssr: false });
 const FooterSection        = dynamic(() => import("@/components/sections/FooterSection"),             { ssr: false });
-const AnnouncementBanner   = dynamic(() => import("@/components/AnnouncementBanner"),                 { ssr: false });
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
@@ -40,9 +39,6 @@ export default function Home() {
 
       {/* Sleek Minimal Loading Screen */}
       {!loaded && <LoadingScreen onComplete={() => setLoaded(true)} />}
-
-      {/* Hackathon Announcement Banner — shown after loading */}
-      {loaded && <AnnouncementBanner />}
 
       {/* Navigation */}
       {loaded && <Navbar />}
