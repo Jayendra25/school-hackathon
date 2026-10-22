@@ -10,7 +10,7 @@ const mainAwards = [
     title: "Hackathon Champion",
     who: "Highest combined score across Hackathon + Quiz + Treasure Hunt",
     perks: "Winner Trophy + Winner Certificates",
-    prize: "₹20,000",
+    prize: "₹25,000",
     border: "rgba(246,211,101,0.45)",
     glow: "rgba(246,211,101,0.13)",
     iconBg: "rgba(246,211,101,0.12)",
@@ -206,7 +206,7 @@ export default function PrizesSection() {
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-muted)" }}>
-            Track Awards — Trophy / Medal + Certificate per track
+            Track Awards — ₹10,000 Voucher + Trophy / Medal + Certificate per track
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {trackAwards.map((a, i) => {
@@ -253,7 +253,7 @@ export default function PrizesSection() {
           transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
         >
           <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "var(--text-muted)" }}>
-            Special Category Awards — Special Award + Certificate
+            Special Category Awards — ₹10,000 Voucher + Trophy / Medal + Certificate
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {specialAwards.map((a) => {
@@ -288,20 +288,70 @@ export default function PrizesSection() {
           </div>
         </motion.div>
 
-        {/* Participation certificates note + CTA */}
+        {/* Participation certificates note + voucher */}
         <motion.div
-          className="card-glass p-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+          className="card-glass p-6 relative overflow-hidden"
+          style={{
+            borderColor: "rgba(34,197,94,0.40)",
+            boxShadow: "0 0 28px rgba(34,197,94,0.10), inset 0 1px 0 rgba(34,197,94,0.08)",
+          }}
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
         >
-          <div className="flex items-start gap-3">
-            <Star style={{ width: 18, height: 18, color: "var(--accent)", flexShrink: 0, marginTop: 2 }} />
-            <p className="text-sm" style={{ color: "var(--text-muted)" }}>
-              <span className="font-semibold" style={{ color: "var(--text)" }}>Participation Certificates</span>
-              {" "}— Every eligible student who completes the final submission and showcase receives a Certificate of Participation.
-            </p>
+          {/* Top gradient line */}
+          <div
+            className="absolute top-0 left-0 right-0 h-[2px]"
+            style={{ background: "linear-gradient(90deg, transparent, rgba(34,197,94,0.8), transparent)" }}
+          />
+          {/* Glow orb */}
+          <div
+            className="absolute -top-10 -right-10 w-28 h-28 rounded-full pointer-events-none"
+            style={{ background: "radial-gradient(circle, rgba(34,197,94,0.10) 0%, transparent 70%)" }}
+          />
+
+          <div className="flex flex-col sm:flex-row items-center gap-5 relative z-10">
+            {/* Icon badge */}
+            <div
+              className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+              style={{
+                background: "rgba(34,197,94,0.12)",
+                border: "1px solid rgba(34,197,94,0.35)",
+                color: "#22c55e",
+              }}
+            >
+              <Star style={{ width: 22, height: 22 }} />
+            </div>
+
+            {/* Text content */}
+            <div className="flex-1 text-center sm:text-left">
+              <h3 className="text-base font-bold mb-1" style={{ color: "var(--text)" }}>
+                Participation Voucher + Certificate
+              </h3>
+              <p className="text-sm" style={{ color: "var(--text-muted)", lineHeight: "1.7" }}>
+                Every eligible student who completes the final submission and showcase receives a{" "}
+                <span className="font-bold" style={{ color: "#22c55e" }}>₹10,000 Voucher</span>{" "}
+                and a{" "}
+                <span className="font-semibold" style={{ color: "var(--text)" }}>Certificate of Participation</span>.
+              </p>
+            </div>
+
+            {/* Voucher pill */}
+            <div
+              className="flex flex-col items-center justify-center rounded-xl px-5 py-3 flex-shrink-0"
+              style={{
+                background: "rgba(34,197,94,0.12)",
+                border: "1.5px solid rgba(34,197,94,0.40)",
+              }}
+            >
+              <span className="text-[10px] font-bold uppercase tracking-widest mb-0.5" style={{ color: "#22c55e", opacity: 0.8 }}>
+                Voucher
+              </span>
+              <span className="text-xl font-extrabold tracking-tight" style={{ color: "#22c55e" }}>
+                ₹10,000
+              </span>
+            </div>
           </div>
         </motion.div>
 

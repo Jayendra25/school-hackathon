@@ -51,7 +51,7 @@ export default function Home() {
       {loaded && (
         <a
           href="/register"
-          aria-label="Register for TechSpark"
+          aria-label="Registrations closed for TechSpark"
           style={{
             position: "fixed",
             bottom: "28px",
@@ -70,36 +70,13 @@ export default function Home() {
             boxShadow: "0 0 16px 4px rgba(139,92,246,0.45), 0 0 40px 8px rgba(192,132,252,0.2), 0 4px 24px rgba(0,0,0,0.35)",
             animation: "floatGlow 2.5s ease-in-out infinite",
             textDecoration: "none",
-            opacity: visible ? 1 : 0,
+            opacity: visible ? 0.7 : 0,
             transform: visible ? "translateY(0) scale(1)" : "translateY(16px) scale(0.95)",
             transition: "opacity 0.28s ease, transform 0.28s ease",
             pointerEvents: visible ? "auto" : "none",
           }}
         >
-          {/* Live pulse dot */}
-          <span style={{ position: "relative", display: "flex", width: 8, height: 8 }}>
-            <span
-              style={{
-                position: "absolute",
-                inset: 0,
-                borderRadius: "50%",
-                background: "#22c55e",
-                opacity: 0.75,
-                animation: "ping 1.2s cubic-bezier(0,0,0.2,1) infinite",
-              }}
-            />
-            <span
-              style={{
-                position: "relative",
-                display: "inline-flex",
-                borderRadius: "50%",
-                width: 8,
-                height: 8,
-                background: "#22c55e",
-              }}
-            />
-          </span>
-          Register Now
+          Registrations Closed
         </a>
       )}
 
