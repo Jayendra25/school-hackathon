@@ -294,19 +294,19 @@ export default function HackathonWrapUp({
           <Confetti />
 
           {/* Content */}
-          <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-2xl">
+          <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 max-w-2xl w-full">
 
             {/* Spark + wordmark */}
             <motion.div
-              className="flex items-center gap-3 mb-3"
+              className="flex items-center gap-2 sm:gap-3 mb-3"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <SparkIcon size={40} />
+              <SparkIcon size={32} />
               <h1
                 className="font-black tracking-tight"
-                style={{ fontSize: "clamp(2rem, 5vw, 3rem)", letterSpacing: "-0.04em", color: "#09090b", lineHeight: 1 }}
+                style={{ fontSize: "clamp(1.75rem, 5vw, 3rem)", letterSpacing: "-0.04em", color: "#09090b", lineHeight: 1 }}
               >
                 Tech<span className="text-gradient-royal">Spark</span>
               </h1>
@@ -314,8 +314,8 @@ export default function HackathonWrapUp({
 
             {/* 2026 badge */}
             <motion.span
-              className="text-gradient-gold font-mono font-bold mb-6"
-              style={{ fontSize: "clamp(0.8rem, 2vw, 1rem)", letterSpacing: "0.1em" }}
+              className="text-gradient-gold font-mono font-bold mb-5 sm:mb-6"
+              style={{ fontSize: "clamp(0.75rem, 2vw, 1rem)", letterSpacing: "0.1em" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.15 }}
@@ -325,7 +325,7 @@ export default function HackathonWrapUp({
 
             {/* Success badge */}
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-5 sm:mb-6"
               style={{
                 background: "rgba(34,197,94,0.10)",
                 border: "1px solid rgba(34,197,94,0.35)",
@@ -334,17 +334,17 @@ export default function HackathonWrapUp({
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.45, delay: 0.2, ease: "easeOut" }}
             >
-              <CheckCircle2 style={{ width: 16, height: 16, color: "#22c55e" }} />
-              <span className="text-sm font-bold" style={{ color: "#22c55e" }}>
+              <CheckCircle2 style={{ width: 14, height: 14, color: "#22c55e" }} />
+              <span className="text-xs sm:text-sm font-bold" style={{ color: "#22c55e" }}>
                 Hackathon Successfully Concluded!
               </span>
             </motion.div>
 
             {/* Main heading */}
             <motion.h2
-              className="font-black tracking-[-0.03em] leading-[1.0] mb-5"
+              className="font-black tracking-[-0.03em] leading-[1.05] mb-4 sm:mb-5"
               style={{
-                fontSize: "clamp(2rem, 7vw, 4rem)",
+                fontSize: "clamp(1.5rem, 6vw, 4rem)",
                 color: "#09090b",
               }}
               initial={{ opacity: 0, y: 16 }}
@@ -358,8 +358,8 @@ export default function HackathonWrapUp({
 
             {/* Thank-you message */}
             <motion.p
-              className="text-base sm:text-lg mb-10"
-              style={{ color: "#71717a", lineHeight: 1.7, maxWidth: 480 }}
+              className="text-sm sm:text-base md:text-lg mb-8 sm:mb-10"
+              style={{ color: "#71717a", lineHeight: 1.6, maxWidth: 480 }}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.36, ease: "easeOut" }}
@@ -373,9 +373,9 @@ export default function HackathonWrapUp({
               </span>
             </motion.p>
 
-            {/* Stats row */}
+            {/* Stats row — 2×2 grid on mobile, row on larger screens */}
             <motion.div
-              className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 mb-10"
+              className="grid grid-cols-2 gap-3 sm:gap-4 md:flex md:flex-wrap md:items-center md:justify-center md:gap-6 lg:gap-8 mb-8 sm:mb-10 w-full max-w-md sm:max-w-none"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.44, ease: "easeOut" }}
@@ -385,26 +385,26 @@ export default function HackathonWrapUp({
                 return (
                   <motion.div
                     key={s.label}
-                    className="flex items-center gap-2.5"
+                    className="flex items-center gap-2 sm:gap-2.5 justify-center md:justify-start"
                     initial={{ opacity: 0, scale: 0.85 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: 0.5 + i * 0.08, ease: "easeOut" }}
                   >
                     <div
-                      className="flex items-center justify-center rounded-xl"
+                      className="flex items-center justify-center rounded-lg sm:rounded-xl shrink-0"
                       style={{
-                        width: 36, height: 36,
+                        width: 32, height: 32,
                         background: "var(--accent-dim)",
                         border: "1px solid var(--border-accent)",
                         color: "var(--accent)",
                         flexShrink: 0,
                       }}
                     >
-                      <Icon style={{ width: 17, height: 17 }} />
+                      <Icon style={{ width: 15, height: 15 }} />
                     </div>
                     <div className="text-left">
-                      <div className="text-sm font-bold" style={{ color: "#09090b", lineHeight: 1.2 }}>{s.label}</div>
-                      <div className="text-[11px]" style={{ color: "#a1a1aa" }}>{s.sub}</div>
+                      <div className="text-xs sm:text-sm font-bold" style={{ color: "#09090b", lineHeight: 1.2 }}>{s.label}</div>
+                      <div className="text-[10px] sm:text-[11px]" style={{ color: "#a1a1aa" }}>{s.sub}</div>
                     </div>
                   </motion.div>
                 );
@@ -413,22 +413,22 @@ export default function HackathonWrapUp({
 
             {/* Heart line */}
             <motion.p
-              className="flex items-center gap-2 text-sm mb-8"
+              className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 text-xs sm:text-sm mb-6 sm:mb-8 text-center"
               style={{ color: "#a1a1aa" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.9 }}
             >
-              Organised by Birla Institute of Applied Sciences
-              <span style={{ color: "#e4e4e7" }}>·</span>
-              Powered by Coding Blocks
+              <span>Organised by Birla Institute of Applied Sciences</span>
+              <span className="hidden sm:inline" style={{ color: "#e4e4e7" }}>·</span>
+              <span>Powered by Coding Blocks</span>
             </motion.p>
 
             {/* Enter Site button */}
             <motion.button
               onClick={handleEnter}
-              className="btn-primary"
-              style={{ padding: "15px 40px", fontSize: 15 }}
+              className="btn-primary w-full sm:w-auto"
+              style={{ padding: "13px 32px", fontSize: 15 }}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 1, ease: "easeOut" }}
