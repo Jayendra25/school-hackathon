@@ -7,7 +7,6 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 // Dynamic imports for code splitting & smooth performance
 const DynamicGradient      = dynamic(() => import("@/components/DynamicGradient"),                    { ssr: false });
 const LoadingScreen        = dynamic(() => import("@/components/LoadingScreen"),                      { ssr: false });
-const HackathonWrapUp      = dynamic(() => import("@/components/HackathonWrapUp"),                    { ssr: false });
 const Navbar               = dynamic(() => import("@/components/Navbar"),                             { ssr: false });
 const HeroSection          = dynamic(() => import("@/components/sections/HeroSection"),               { ssr: false });
 const AboutSection         = dynamic(() => import("@/components/sections/AboutSection"),              { ssr: false });
@@ -26,7 +25,6 @@ const FooterSection        = dynamic(() => import("@/components/sections/FooterS
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [wrapUpDismissed, setWrapUpDismissed] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 300);
@@ -38,11 +36,6 @@ export default function Home() {
     <ThemeProvider>
       {/* Animated gradient orbs — fixed, behind everything */}
       <DynamicGradient />
-
-      {/* Hackathon wrap-up / thank-you screen — shows first on launch */}
-      {!wrapUpDismissed && (
-        <HackathonWrapUp onEnter={() => setWrapUpDismissed(true)} />
-      )}
 
       {/* Sleek Minimal Loading Screen */}
       {!loaded && <LoadingScreen onComplete={() => setLoaded(true)} />}
