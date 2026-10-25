@@ -159,7 +159,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.08, ease: "easeOut" }}
         >
-          Tech<span className="text-gradient-royal">Spark</span>
+          Tech<span className="text-gradient-royal">Flame</span>
           <svg
             viewBox="0 0 40 40"
             fill="none"
