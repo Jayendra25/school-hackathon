@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useCallback, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, ArrowRight, Heart, Trophy, Users, Code2, Calendar } from "lucide-react";
+import { CheckCircle2, ArrowRight, Trophy, Users, Code2, Calendar } from "lucide-react";
 
 /* ───────────────────────────────────────────────
    Lightweight canvas confetti — self-contained
@@ -258,8 +258,10 @@ export default function HackathonWrapUp({
     setTimeout(onEnter, 600);
   }, [onEnter]);
 
-  // Lock scroll while wrap-up is visible
+  // Lock background scroll only on larger screens (mobile needs internal scroll)
   useEffect(() => {
+    const isMobile = window.innerWidth < 640;
+    if (isMobile) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
@@ -281,8 +283,8 @@ export default function HackathonWrapUp({
       {!exiting && (
         <motion.div
           key="wrapup"
-          className="fixed inset-0 z-[9998] flex flex-col items-center justify-center overflow-hidden"
-          style={{ backgroundColor: "#fafafa" }}
+          className="fixed inset-0 z-[9998] flex flex-col items-center justify-center overflow-y-auto overflow-x-hidden"
+          style={{ backgroundColor: "#fafafa", padding: "80px 0 40px" }}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.02 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -294,7 +296,7 @@ export default function HackathonWrapUp({
           <Confetti />
 
           {/* Content */}
-          <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 max-w-2xl w-full">
+          <div className="relative z-10 flex flex-col items-center text-center px-5 sm:px-6 max-w-2xl w-full mx-auto">
 
             {/* Spark + wordmark */}
             <motion.div
@@ -342,9 +344,9 @@ export default function HackathonWrapUp({
 
             {/* Main heading */}
             <motion.h2
-              className="font-black tracking-[-0.03em] leading-[1.05] mb-4 sm:mb-5"
+              className="font-black tracking-[-0.03em] leading-[1.1] mb-4 sm:mb-5"
               style={{
-                fontSize: "clamp(1.5rem, 6vw, 4rem)",
+                fontSize: "clamp(1.6rem, 5.5vw, 4rem)",
                 color: "#09090b",
               }}
               initial={{ opacity: 0, y: 16 }}
@@ -375,7 +377,7 @@ export default function HackathonWrapUp({
 
             {/* Stats row — 2×2 grid on mobile, row on larger screens */}
             <motion.div
-              className="grid grid-cols-2 gap-3 sm:gap-4 md:flex md:flex-wrap md:items-center md:justify-center md:gap-6 lg:gap-8 mb-8 sm:mb-10 w-full max-w-md sm:max-w-none"
+              className="grid grid-cols-2 gap-x-3 gap-y-4 sm:gap-4 md:flex md:flex-wrap md:items-center md:justify-center md:gap-6 lg:gap-8 mb-8 sm:mb-10 w-full max-w-sm sm:max-w-none mx-auto"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.44, ease: "easeOut" }}
@@ -402,9 +404,9 @@ export default function HackathonWrapUp({
                     >
                       <Icon style={{ width: 15, height: 15 }} />
                     </div>
-                    <div className="text-left">
-                      <div className="text-xs sm:text-sm font-bold" style={{ color: "#09090b", lineHeight: 1.2 }}>{s.label}</div>
-                      <div className="text-[10px] sm:text-[11px]" style={{ color: "#a1a1aa" }}>{s.sub}</div>
+                    <div className="text-left min-w-0">
+                      <div className="text-xs sm:text-sm font-bold whitespace-nowrap" style={{ color: "#09090b", lineHeight: 1.2 }}>{s.label}</div>
+                      <div className="text-[10px] sm:text-[11px] whitespace-nowrap" style={{ color: "#a1a1aa" }}>{s.sub}</div>
                     </div>
                   </motion.div>
                 );
@@ -439,30 +441,7 @@ export default function HackathonWrapUp({
               <ArrowRight className="w-4 h-4" />
             </motion.button>
 
-            {/* Subtle hint */}
-            <motion.span
-              className="mt-4 text-xs font-mono"
-              style={{ color: "#d4d4d8" }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.4 }}
-            >
-              Press Enter to continue
-            </motion.span>
-
           </div>
-
-          {/* Floating hearts decoration */}
-          <motion.div
-            className="absolute bottom-6 right-6 flex items-center gap-1.5"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-            style={{ color: "#a1a1aa", zIndex: 3 }}
-          >
-            <Heart style={{ width: 13, height: 13, color: "#f6d365", fill: "#f6d365" }} />
-            <span className="text-xs font-medium">Made with passion</span>
-          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
