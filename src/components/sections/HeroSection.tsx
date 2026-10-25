@@ -68,32 +68,7 @@ function Countdown() {
   const { days, hours, minutes, seconds, isOver } = useCountdown(COUNTDOWN_TARGET);
 
   if (isOver) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full"
-        style={{
-          background: "rgba(34,197,94,0.10)",
-          border: "1px solid rgba(34,197,94,0.35)",
-        }}
-      >
-        <span className="relative flex h-2.5 w-2.5">
-          <span
-            className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-            style={{ background: "#22c55e" }}
-          />
-          <span
-            className="relative inline-flex rounded-full h-2.5 w-2.5"
-            style={{ background: "#22c55e" }}
-          />
-        </span>
-        <span className="text-sm font-bold" style={{ color: "#22c55e" }}>
-          Showcase Day is Live!
-        </span>
-      </motion.div>
-    );
+    return null;
   }
 
   return (
